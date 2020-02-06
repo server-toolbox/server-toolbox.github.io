@@ -1,4 +1,9 @@
 import html, { render } from './components/preact.js'
 import App from './containers/main.js'
 
-render(html`<${App}/>`, document.body)
+const { body } = document;
+
+// clear body before render
+body.innerHTML = '';
+
+render(html`<${App}/>`, body)
