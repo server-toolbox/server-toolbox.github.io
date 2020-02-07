@@ -14,7 +14,6 @@ function path(maxVal, points){
     let pointPosition = 0;
     let res = `${width},${maxTopPosition + height} 0,${maxTopPosition + height} `;
     for(const point of points){
-        const shift = maxTopPosition * point / 100;
         res += `${
             round(pointPosition, 100)
         },${
