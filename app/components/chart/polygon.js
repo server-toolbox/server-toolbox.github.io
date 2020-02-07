@@ -1,4 +1,4 @@
-import html, { Component } from '../preact.js'
+import { html, Component } from '../3rd-party/preact.js'
 
 function round(num, base){
     return Math.round(num * base) / base

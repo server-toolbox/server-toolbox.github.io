@@ -1,4 +1,4 @@
-import html, { Component } from './preact.js'
+import { html, Component } from './3rd-party/preact.js'
 import Polygon from './chart/polygon.js'
 import Line from './chart/line.js'
 import Text from './chart/text.js'

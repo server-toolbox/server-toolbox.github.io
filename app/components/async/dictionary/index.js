@@ -1,3 +1,5 @@
+import { registerAsyncComponent } from '../../../globalState.js'
+
 function up(dir){
     const pieces = dir.split('/');
     pieces.pop();
@@ -30,8 +32,19 @@ async function getSrc(){
     }
 }
 
-export default (async () => {
+let dict;
+
+registerAsyncComponent('translate', (async () => {
     const src = getSrc();
     const jsYamlModule = await jsYaml();
     return jsYamlModule.load(await src)
-})()
+})().then(v => (
+    dict = v,
+    phrase => dictionaryRecursiveIterator(phrase.split('.'), dict, phrase)
+)));
+
+function dictionaryRecursiveIterator(phrase, currentSection, realPhrase){
+    if(!currentSection) return 'Translation for ' + realPhrase + ' not found';
+    if(!phrase.length) return currentSection;
+    dictionaryRecursiveIterator(phrase, currentSection[phrase.shift()], realPhrase)
+}
