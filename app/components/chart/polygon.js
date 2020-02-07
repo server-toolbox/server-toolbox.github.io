@@ -25,7 +25,7 @@ function path(maxVal, points){
 
 export default class extends Component{
     render(){
-        const { maxVal, points } = this.props;
-        return html`<polygon stroke-miterlimit="10" points=${path(maxVal, points)}/>`
+        const { maxVal, points, color } = this.props;
+        return html`<polygon fill=${color} stroke-miterlimit='10' points=${path(maxVal, points)}/>`
     }
 }
