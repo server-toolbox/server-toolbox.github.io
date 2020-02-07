@@ -1,7 +1,7 @@
 import html, { Component } from '../preact.js'
 
 function round(num, base){
-    return Math.floor(num * base) / base
+    return Math.round(num * base) / base
 }
 
 const height = 222.7;
