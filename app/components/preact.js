@@ -2,4 +2,4 @@ export {
     html as default,
     render,
     Component,
-} from 'https://unpkg.com/htm/preact/standalone.module.js'
+} from './3rd-party/preact.module.js'
