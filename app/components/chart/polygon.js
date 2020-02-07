@@ -12,13 +12,13 @@ function path(maxVal, points){
     const interval = width / (points.length - 1);
     const valueInterval = height / maxVal;
     let pointPosition = 0;
-    let res = `${width},${height} 0,${height} `;
+    let res = `${width},${maxTopPosition + height} 0,${maxTopPosition + height} `;
     for(const point of points){
         const shift = maxTopPosition * point / 100;
         res += `${
             round(pointPosition, 100)
         },${
-            round(shift + height - point * valueInterval, 100)
+            round(maxTopPosition + height - point * valueInterval, 100)
         } `;
         pointPosition += interval
     }
