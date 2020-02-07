@@ -22,7 +22,7 @@ export default class extends Component{
         }
 
         for(const name in graphs){
-            names.push(html`<g class=name><${Text} x=${nameIdx * pointInterval} y=249.0003>${name}</${Text}></g>`);
+            names.push(html`<${Text} x=${nameIdx * pointInterval} y=249.0003 class=name>${name}</${Text}>`);
             for(let i = 0; i < graphCount; i++) (pointValues[i] = pointValues[i] || []).push(graphs[name][i] || 0);
             nameIdx++
         }
