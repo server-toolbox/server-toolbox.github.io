@@ -2,15 +2,13 @@ import { html, Component } from './components/3rd-party/preact.js'
 
 const GLOBAL_STATE = new Map();
 
-const modulesRegister = Object.create(null);
+let modulesRegister = Object.create(null);
 let asyncComponentsLoaded = false;
 
 export function connect(stateDescriptor){
-    const props = {};
-    for(const i in stateDescriptor) props[i] = stateDescriptor[i](GLOBAL_STATE);
     return _ => class extends Component{
         render(){
-            return html`<${_} ...${this.props} ...${props}/>`
+            return html`<${_} ...${this.props} ...${stateDescriptor(GLOBAL_STATE)}/>`
         }
     }
 }

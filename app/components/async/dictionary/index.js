@@ -10,7 +10,7 @@ const defaultLang = 'en';
 
 async function jsYaml(){
     try{
-        const module = await fetch(`${up(__dirname)}/3rd-party/js-yaml.min.js`).then(r => r.text());
+        const module = await fetch(`${up(up(__dirname))}/3rd-party/js-yaml.min.js`).then(r => r.text());
         const f = new Function('window', module);
         const exports = {};
         f(exports);

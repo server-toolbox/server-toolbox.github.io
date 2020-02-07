@@ -4,7 +4,8 @@ import { connect } from '../globalState.js';
 
 class App extends Component{
     render(){
-        return html`<div>${this.props.test}
+        const { translate } = this.props;
+        return html`<div>
             <${Chart} points=${{
                 '18:00': [33, 88],
                 '18:01': [37, 88],
