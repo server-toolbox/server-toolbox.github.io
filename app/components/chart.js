@@ -33,7 +33,7 @@ export default class extends Component{
 
         return html`<svg viewBox="0 0 500 250">
             <defs/>
-            <style>line{stroke:${textColor}}line,text{fill:${textColor}}text{font-family:Roboto;font-size:9px}.name{text-anchor:middle}</style>
+            <style>line{stroke:${textColor}}line,text{fill:${textColor}}text{font-family:Roboto;font-size:9px}.name~.name{text-anchor:middle}</style>
             <${Line} height=27.3/>
             <${Line} height=66.7/>
             <${Line} height=105.3/>
