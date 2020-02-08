@@ -1,16 +1,12 @@
 import { registerAsyncComponent } from '../../globalState.js'
+import { components, up } from '../../path.js'
 
-function up(dir){
-    const pieces = dir.split('/');
-    pieces.pop();
-    return pieces.join('/')
-}
 const __dirname = up(import.meta.url);
 const defaultLang = 'en';
 
 async function jsYaml(){
     try{
-        const module = await fetch(`${up(up(__dirname))}/3rd-party/js-yaml.min.js`).then(r => r.text());
+        const module = await fetch(`${components}/3rd-party/js-yaml.min.js`).then(r => r.text());
         const f = new Function('window', module);
         const exports = {};
         f(exports);
