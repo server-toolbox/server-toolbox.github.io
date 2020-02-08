@@ -16,3 +16,5 @@ export function callbackLogger<F extends CallbackFunction<A, T>, A, T>(asyncF: (
 export function callbackLogger<F extends CallbackVoidFunction<A>, A>(asyncF: (console: AsyncConsole) => F): F
 
 export default _
+
+export function withName<F extends Function, N extends string>(name: N, f: F): F & { name: N }

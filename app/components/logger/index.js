@@ -81,3 +81,7 @@ export function callbackLogger(asyncFN){
         return targetF.apply(null, args)
     }
 }
+
+export function withName(name, f){
+    return Object.defineProperty(f, 'name', { value: name })
+}
