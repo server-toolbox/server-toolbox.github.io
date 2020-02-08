@@ -1,4 +1,4 @@
-import { registerAsyncComponent } from '../../../globalState.js'
+import { registerAsyncComponent } from '../../globalState.js'
 
 function up(dir){
     const pieces = dir.split('/');

@@ -1,6 +1,6 @@
 import { html, Component } from '../components/3rd-party/preact.js'
 import Chart from '../components/chart.js'
-import { connect } from '../globalState.js';
+import { connect } from '../components/globalState.js';
 
 class App extends Component{
     render(){

@@ -1,4 +1,4 @@
-import { html, Component } from './components/3rd-party/preact.js'
+import { html, Component } from './3rd-party/preact.js'
 
 const GLOBAL_STATE = new Map();
 

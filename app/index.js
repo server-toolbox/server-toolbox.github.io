@@ -1,6 +1,6 @@
 import { html, render } from './components/3rd-party/preact.js'
 import App from './containers/main.js'
-import { waitForAsyncComponents } from './globalState.js'
+import { waitForAsyncComponents } from './components/globalState.js'
 import './components/async/dictionary/index.js'
 
 const { body } = document;
