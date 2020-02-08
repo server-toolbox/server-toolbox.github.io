@@ -46,5 +46,5 @@ registerAsyncComponent('translate', (async () => {
 function dictionaryRecursiveIterator(phrase, currentSection, realPhrase){
     if(!currentSection) return 'Translation for ' + realPhrase + ' not found';
     if(!phrase.length) return currentSection;
-    dictionaryRecursiveIterator(phrase, currentSection[phrase.shift()], realPhrase)
+    return dictionaryRecursiveIterator(phrase, currentSection[phrase.shift()], realPhrase)
 }
