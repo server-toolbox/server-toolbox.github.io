@@ -1,20 +1,9 @@
 import { registerAsyncComponent } from '../../globalState.js'
-import { components, up } from '../../path.js'
+import { up } from '../../path.js'
+import jsYaml from '../../yaml.js'
 
 const __dirname = up(import.meta.url);
 const defaultLang = 'en';
-
-async function jsYaml(){
-    try{
-        const module = await fetch(`${components}/3rd-party/js-yaml.min.js`).then(r => r.text());
-        const f = new Function('window', module);
-        const exports = {};
-        f(exports);
-        return exports.jsyaml
-    } catch(e){
-        return new Proxy({}, { get: (_, p) => () => _ })
-    }
-}
 
 async function getSrc(){
     try{
@@ -32,8 +21,7 @@ let dict;
 
 registerAsyncComponent('translate', (async () => {
     const src = getSrc();
-    const jsYamlModule = await jsYaml();
-    return jsYamlModule.load(await src)
+    return jsYaml.load(await src)
 })().then(v => (
     dict = v,
     phrase => dictionaryRecursiveIterator(phrase.split('.'), dict, phrase)
