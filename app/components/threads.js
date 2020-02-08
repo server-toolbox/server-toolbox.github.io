@@ -35,23 +35,18 @@ export default class Thread{
         return new Proxy(this, {
             get(_, p){
                 if(!(p in _)){
-                    _[p] = withLog(console => withName(namePrefix + p, async (...args) => {
-                        try{
-                            await workerLoad;
-                            const id = rand();
-                            callStack[id] = new SelfResolvingPromise;
-                            worker.postMessage({
-                                method: p,
-                                args,
-                                id,
-                            });
-                            const res = await callStack[id];
-                            delete callStack[id];
-                            console.log('return:', res);
-                            return res
-                        } catch(e){
-                            console.error(e)
-                        }
+                    _[p] = withLog(() => withName(namePrefix + p, async (...args) => {
+                        await workerLoad;
+                        const id = rand();
+                        callStack[id] = new SelfResolvingPromise;
+                        worker.postMessage({
+                            method: p,
+                            args,
+                            id,
+                        });
+                        const res = await callStack[id];
+                        delete callStack[id];
+                        return res
                     }));
                     return _[p]
                 }

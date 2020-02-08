@@ -68,6 +68,7 @@ export default asyncFN => {
         const targetF = asyncFN(console);
         console[_name] = targetF.name;
         var res = await targetF.apply(null, args);
+        console.log('return:', res);
         console.end();
         return res
     }
