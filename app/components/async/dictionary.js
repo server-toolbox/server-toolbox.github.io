@@ -1,6 +1,6 @@
-import { registerAsyncComponent } from '../../globalState.js'
-import { locale } from '../../path.js'
-import jsYaml from '../../yaml.js'
+import { registerAsyncComponent } from '../globalState.js'
+import { locale } from '../path.js'
+import jsYaml from '../yaml.js'
 
 const defaultLang = 'en';
 
