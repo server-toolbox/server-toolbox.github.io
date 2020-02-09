@@ -1,15 +1,18 @@
 import { html, Component } from '../../components/3rd-party/preact.js'
-import { connect } from '../../components/globalState.js'
+import Link from './link.js'
 
-class Menu extends Component{
+export default class Menu extends Component{
     render(){
-        const { translate } = this.props;
+        const { setMainContainerState } = this.props;
+        const _ = { setMainContainerState };
         return html`
-            Menu
+            <header>
+                <img src="https://getmdl.io/templates/dashboard/images/user.jpg"/>
+                <span>hello@example.com</span>
+            </header>
+            <nav>
+                <${Link} icon=home name=home ...${_}/>
+            </nav>
         `
     }
 }
-
-export default connect(state => ({
-    translate: state.get('translate')
-}))(Menu)

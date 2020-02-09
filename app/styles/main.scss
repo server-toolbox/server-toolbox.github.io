@@ -3,6 +3,7 @@
     --menu-bg: #37474f;
     --menu-head-bg: #263238;
     --menu-item-color: #98a0a4;
+    --menu-item-icon-color: #78909c;
     --text-light: #eceff1;
 }
 
@@ -53,7 +54,18 @@ body{
         > a{
             color: var(--menu-item-color);
             padding: 16px 40px;
+            font-weight: 500;
+            display: flex;
+            flex-direction: row;
+            align-items: center;
             cursor: pointer;
+            > i{
+                color: var(--menu-item-icon-color);
+                margin-right: 32px;
+            }
+            &:hover{
+                background-color: #fff2;
+            }
         }
     }
 }
