@@ -25,13 +25,17 @@ function onmessage(workerLoad){
     }
 }
 
+function getNamePrefix(module){
+    return `thread ${threadCount++}\n${module}: `
+}
+
 export default class Thread{
     constructor(module){
         const workerLoad = new SelfResolvingPromise;
         const worker = new Worker(workerPath, { type: 'module' });
         worker.onmessage = onmessage(workerLoad);
         worker.postMessage({module});
-        const namePrefix = `thread ${threadCount++}\n${module}: `
+        const namePrefix = getNamePrefix(module);
         return new Proxy(this, {
             get(_, p){
                 if(!(p in _)){
@@ -53,4 +57,15 @@ export default class Thread{
             }
         })
     }
+}
+
+export function asThread(existentThread, module){
+    const namePrefix = getNamePrefix(module);
+    for(const p in existentThread){
+        if(typeof existentThread[p] === 'function'){
+            const realF = existentThread[p];
+            existentThread[p] = withLog(() => withName(namePrefix + p, realF))
+        }
+    }
+    return existentThread
 }
