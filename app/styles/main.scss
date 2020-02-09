@@ -1,3 +1,11 @@
+:root{
+    --bg-color: #f3f3f3;
+    --menu-bg: #37474f;
+    --menu-head-bg: #263238;
+    --menu-item-color: #98a0a4;
+    --text-light: #eceff1;
+}
+
 html{
     height: 100%;
 }
@@ -6,12 +14,51 @@ body{
     display: flex;
     margin: 0;
     height: 100%;
+    background-color: var(--bg-color);
+    font-family: 'Roboto', 'Helvetica', sans-serif;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 20px;
 }
 
 #menu{
     width: 240px;
+    background-color: var(--menu-bg);
+    display: flex;
+    flex-direction: column;
+    > header{
+        background-color: var(--menu-head-bg);
+        color: var(--text-light);
+        box-sizing: border-box;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+        padding: 16px;
+        height: 151px;
+        > img{
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+        }
+    }
+    > nav{
+        flex-grow: 1;
+        align-items: stretch;
+        padding-top: 16px;
+        display: flex;
+        flex-wrap: nowrap;
+        box-sizing: border-box;
+        flex-shrink: 0;
+        flex-direction: column;
+        > a{
+            color: var(--menu-item-color);
+            padding: 16px 40px;
+            cursor: pointer;
+        }
+    }
 }
 
 #contents{
     flex-grow: 1;
+    flex-shrink: 0;
 }
