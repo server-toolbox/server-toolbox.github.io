@@ -27,6 +27,7 @@ body{
     background-color: var(--menu-bg);
     display: flex;
     flex-direction: column;
+    overflow: auto;
     > header{
         background-color: var(--menu-head-bg);
         color: var(--text-light);
@@ -36,6 +37,7 @@ body{
         justify-content: flex-end;
         padding: 16px;
         height: 151px;
+        flex-shrink: 0;
         > img{
             width: 48px;
             height: 48px;
