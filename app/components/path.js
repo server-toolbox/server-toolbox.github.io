@@ -12,3 +12,5 @@ export const app = up(components)
 export const containers = app + '/containers'
 
 export const styles = app + '/styles'
+
+export const locale = app + '/locale'

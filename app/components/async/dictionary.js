@@ -1,16 +1,15 @@
 import { registerAsyncComponent } from '../../globalState.js'
-import { up } from '../../path.js'
+import { locale } from '../../path.js'
 import jsYaml from '../../yaml.js'
 
-const __dirname = up(import.meta.url);
 const defaultLang = 'en';
 
 async function getSrc(){
     try{
-        return await fetch(`${__dirname}/${navigator.language.slice(0, 2)}.yml`).then(r => r.text())
+        return await fetch(`${locale}/${navigator.language.slice(0, 2)}.yml`).then(r => r.text())
     } catch(e){
         try{
-            return await fetch(`${__dirname}/${defaultLang}.yml`).then(r => r.text())
+            return await fetch(`${locale}/${defaultLang}.yml`).then(r => r.text())
         } catch(e){
             return ''
         }
