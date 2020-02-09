@@ -5,7 +5,7 @@ export function up(dir){
     return pieces.join('/')
 }
 
-export const components = up(import.meta.url)
+export const components = up(new URL(import.meta.url).pathname)
 
 export const app = up(components)
 

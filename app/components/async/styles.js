@@ -4,5 +4,5 @@ import { styles } from '../path.js'
 
 registerAsyncComponent('styles', (async () => {
     const src = await fetch(styles + '/main.scss').then(r => r.text())
-    return await (await sass).compile(src)
+    return (await sass).compile(src)
 })())
