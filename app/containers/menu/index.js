@@ -3,8 +3,8 @@ import Link from './link.js'
 
 export default class Menu extends Component{
     render(){
-        const { setMainContainerState } = this.props;
-        const _ = { setMainContainerState };
+        const { setMainContainerState, container } = this.props;
+        const _ = { setMainContainerState, container };
         return html`
             <header>
                 <img src="https://getmdl.io/templates/dashboard/images/user.jpg"/>

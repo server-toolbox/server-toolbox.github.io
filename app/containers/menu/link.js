@@ -3,8 +3,9 @@ import { connect } from '../../components/globalState.js'
 
 class Link extends Component{
     render(){
-        const { translate, icon, name, setMainContainerState } = this.props;
-        return html`<a onclick=${() => setMainContainerState({ container: name })}>
+        const { translate, icon, name, setMainContainerState, container } = this.props;
+        const active = container === name;
+        return html`<a onclick=${() => setMainContainerState({ container: name })} class=${active ? 'active' : ''}>
             <i class=material-icons role=presentation>${icon}</i>
             ${translate('containers.' + name)}
         </a>`
