@@ -1,27 +1,12 @@
 import { html, Component } from '../components/3rd-party/preact.js'
-import Chart from '../components/chart.js'
-import { connect } from '../components/globalState.js';
+import Menu from './menu/index.js'
+import Contents from './main/index.js'
 
-class App extends Component{
+export default class App extends Component{
     render(){
-        const { translate } = this.props;
-        return html`<div>
-            <${Chart} points=${{
-                '18:00': [33, 88],
-                '18:01': [37, 88],
-                '18:02': [0, 88, 33],
-                '18:03': [44, 100],
-                '18:04': [77, 88],
-                '18:05': [33, 88],
-            }} colors=${[
-                '#f008',
-                '#00f8',
-                '#0f08',
-            ]} textColor=#888 maxVal=${100}/>
-        </div>`
+        return html`
+            <div id=menu><${Menu}/></div>
+            <div id=contents><${Contents}/></div>
+        `
     }
 }
-
-export default connect(state => ({
-    translate: state.get('translate')
-}))(App)
