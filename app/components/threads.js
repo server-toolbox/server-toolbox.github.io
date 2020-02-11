@@ -30,12 +30,12 @@ function getNamePrefix(module){
 }
 
 export default class Thread{
-    constructor(module){
+    constructor(module, logName){
         const workerLoad = new SelfResolvingPromise;
         const worker = new Worker(workerPath, { type: 'module' });
         worker.onmessage = onmessage(workerLoad);
         worker.postMessage({module});
-        const namePrefix = getNamePrefix(module);
+        const namePrefix = getNamePrefix(logName || module);
         return new Proxy(this, {
             get(_, p){
                 if(!(p in _)) _[p] = withLog(() => withName(namePrefix + p, async (...args) => {
