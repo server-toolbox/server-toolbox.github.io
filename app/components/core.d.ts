@@ -1,1 +1,6 @@
-export function connect(host: string, port?: 443): Promise<any>
+export default class Core{
+    /**
+     * Connect to SSH server through WebSocket
+     */
+    connect(host: string, path?: string, port?: number | string, ssl?: boolean): Promise<void>
+}
