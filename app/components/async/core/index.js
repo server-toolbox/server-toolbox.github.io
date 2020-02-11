@@ -8,13 +8,16 @@ function up(dir, sep = '/'){
 
 const __dirname = up(import.meta.url);
 
+const module = {};
+self.exportMethod = (name, method) => module[name] = method;
+
 export default new Promise((res, rej) => {
     self.res = res;
     self.rej = rej;
-}).then(r => {
+}).then(() => {
     delete self.res;
     delete self.rej;
-    return r
+    return module
 });
 
 const go = new Go();
