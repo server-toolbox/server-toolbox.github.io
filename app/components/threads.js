@@ -20,7 +20,7 @@ class SelfResolvingPromise{
 function onmessage(workerLoad){
     return function({ data }){
         if(data === 'load') workerLoad.resolve();
-        else if(data.data) callStack[data.id].resolve(data.data);
+        else if('data' in data) callStack[data.id].resolve(data.data);
         else callStack[data.id].reject(new Error(data.message))
     }
 }
@@ -38,22 +38,20 @@ export default class Thread{
         const namePrefix = getNamePrefix(module);
         return new Proxy(this, {
             get(_, p){
-                if(!(p in _)){
-                    _[p] = withLog(() => withName(namePrefix + p, async (...args) => {
-                        await workerLoad;
-                        const id = rand();
-                        callStack[id] = new SelfResolvingPromise;
-                        worker.postMessage({
-                            method: p,
-                            args,
-                            id,
-                        });
-                        const res = await callStack[id];
-                        delete callStack[id];
-                        return res
-                    }));
-                    return _[p]
-                }
+                if(!(p in _)) _[p] = withLog(() => withName(namePrefix + p, async (...args) => {
+                    await workerLoad;
+                    const id = rand();
+                    callStack[id] = new SelfResolvingPromise;
+                    worker.postMessage({
+                        method: p,
+                        args,
+                        id,
+                    });
+                    const res = await callStack[id];
+                    delete callStack[id];
+                    return res
+                }));
+                return _[p]
             }
         })
     }
