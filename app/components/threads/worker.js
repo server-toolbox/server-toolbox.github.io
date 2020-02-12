@@ -5,7 +5,7 @@ onmessage = async ({ data: { module, method, args, id } }) => {
         postMessage('load')
     }); else {
         try{
-            const data = await thisModule[method](args);
+            const data = await thisModule[method](...(args || []));
             postMessage({ data, id })
         } catch(e){
             const { stack, message } = e;
