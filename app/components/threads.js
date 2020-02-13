@@ -21,7 +21,10 @@ function onmessage(workerLoad){
     return function({ data }){
         if(data === 'load') workerLoad.resolve();
         else if('data' in data) callStack[data.id].resolve(data.data);
-        else callStack[data.id].reject(new Error(data.message))
+        else{
+            console.error(data.stack);
+            callStack[data.id].reject(new Error(data.message))
+        }
     }
 }
 
