@@ -2,7 +2,6 @@ import '../3rd-party/ssh2.js'
 
 export default {
     connect(opts){
-        console.log({...opts[0]})
         const conn = new ssh2;
         conn.on('ready', function() {
             console.log('Client :: ready');
@@ -17,5 +16,5 @@ export default {
                 stream.end('ls -l\nexit\n');
             });
         }).connect(opts);
-    }
+    },
 }
