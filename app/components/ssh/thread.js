@@ -1,6 +1,9 @@
 import '../3rd-party/ssh2.js'
 
 export default {
+    setAddr(addr){
+        self.wsAddr = addr
+    },
     connect(opts){
         const conn = new ssh2;
         conn.on('ready', function() {
