@@ -2,7 +2,7 @@ import servers from './servers.js'
 
 type Server = typeof servers[0]
 
-type Helpers = {
+export type Helpers = {
     cpuUsage: {
         [name: string]: number
     }
