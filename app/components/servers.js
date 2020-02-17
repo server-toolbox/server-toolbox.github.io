@@ -85,4 +85,8 @@ class Server{
     }
 }
 
-export default [...new Array(+localStorage.servers || 0)].map((_, i) => new Server('server' + i))
+const filter = /^server\d+host$/;
+
+let serverCount = Object.keys(localStorage).filter(filter.test.bind(filter)).length
+
+export default [...new Array(serverCount)].map((_, i) => new Server('server' + i))
