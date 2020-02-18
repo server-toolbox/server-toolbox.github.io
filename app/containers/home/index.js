@@ -1,12 +1,17 @@
 import { html, Component } from '../../components/3rd-party/preact.js'
-import SSH from '../../components/ssh.js'
-import servers from '../../components/servers.js'
 import CPUUsageChart from '../../components/charts/cpu.js'
+import servers from '../../components/servers.js'
+import { connect } from '../../components/globalState.js'
 
-export default class extends Component{
+class Home extends Component{
     render(){
-        return html `<div class=mdl-block>
-            <${CPUUsageChart} connection=${new SSH(servers[0])}/>
+        const { connections } = this.props;
+        return html`<div class=mdl-block>
+            <${CPUUsageChart} connection=${connections[0]}/>
         </div>`
     }
 }
+
+export default connect(state => ({
+    connections: servers.map((_, i) => state.get('connection' + i))
+}))(Home)

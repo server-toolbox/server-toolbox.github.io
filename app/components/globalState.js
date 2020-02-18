@@ -32,7 +32,7 @@ class State extends Map{
     }
 }
 
-const GLOBAL_STATE = new State();
+export const GLOBAL_STATE = new State();
 
 let modulesRegister = Object.create(null);
 let asyncComponentsLoaded = false;
