@@ -37,6 +37,10 @@ export default class extends Component{
     componentDidMount(){
         setIntervalImmediate(async () => {
             const values = await cpuUsage(this.props.connection);
+            const { data } = this.state;
+            const keys = Object.keys(data);
+            let j = 0;
+            for(let i = keys.length - 19; i > 0; i--) delete data[keys[j++]];
             this.setState({
                 data: Object.assign({}, this.state.data, {
                     [formatTime(new Date)]:
