@@ -3,10 +3,25 @@ import Polygon from './chart/polygon.js'
 import Line from './chart/line.js'
 import Text, { BottomText } from './chart/text.js'
 
+function fixGraphs(graphs){
+    const keys = Object.keys(graphs);
+    if(keys.length === 1){
+        const name = keys[0];
+        const graph = graphs[name];
+        return {
+            '': graph,
+            [name]: graph,
+            ' ': graph,
+        }
+    }
+    return graphs
+}
+
 export default class extends Component{
     render(){
-        const { points: graphs, colors, maxVal, textColor } = this.props,
-            names = [],
+        const { colors, maxVal, textColor } = this.props;
+        const graphs = fixGraphs(this.props.points);
+        const names = [],
             pointValues = [],
             pointNames = Object.keys(graphs),
             pointInterval = 464.333 / (pointNames.length - 1),
