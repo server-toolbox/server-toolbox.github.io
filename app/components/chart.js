@@ -1,7 +1,7 @@
 import { html, Component } from './3rd-party/preact.js'
 import Polygon from './chart/polygon.js'
 import Line from './chart/line.js'
-import Text from './chart/text.js'
+import Text, { BottomText } from './chart/text.js'
 
 export default class extends Component{
     render(){
@@ -22,7 +22,7 @@ export default class extends Component{
         }
 
         for(const name in graphs){
-            names.push(html`<${Text} x=${nameIdx * pointInterval} y=249.0003 class=name>${name}</${Text}>`);
+            names.push(html`<${BottomText} x=${nameIdx * pointInterval} y=255.0003 class=name>${name}</${BottomText}>`);
             for(let i = 0; i < graphCount; i++) (pointValues[i] = pointValues[i] || []).push(graphs[name][i] || 0);
             nameIdx++
         }
@@ -31,9 +31,9 @@ export default class extends Component{
             <${Polygon} color=${nextColor()} points=${points} maxVal=${maxVal}/>
         `)
 
-        return html`<svg viewBox="0 0 500 250">
+        return html`<svg viewBox="0 0 500 250" style="overflow:unset">
             <defs/>
-            <style>line{stroke:${textColor}}line,text{fill:${textColor}}text{font-family:Roboto;font-size:9px}.name~.name{text-anchor:middle}</style>
+            <style>line{stroke:${textColor}}line,text{fill:${textColor}}text{font-family:Roboto;font-size:9px}.name>text{transform:rotate(-45deg)}</style>
             <${Line} height=27.3/>
             <${Line} height=66.7/>
             <${Line} height=105.3/>
