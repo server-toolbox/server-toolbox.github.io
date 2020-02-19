@@ -1,6 +1,7 @@
 import { html, Component } from '../../components/3rd-party/preact.js'
 import Chart from '../chart.js'
 import { cpuUsage } from '../remoteDataControllers.js'
+import { setIntervalImmediate } from '../helpers.js'
 
 const colors = [
     '#f008',
@@ -13,11 +14,6 @@ const colors = [
     '#00f8',
     '#0f08',
 ]
-
-function setIntervalImmediate(handler, timeout, ...args){
-    handler();
-    return setInterval(handler, timeout, ...args)
-}
 
 function _p(num){
     return `${num < 10 ? '0' : ''}${num}`
