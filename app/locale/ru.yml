@@ -1,2 +1,7 @@
 containers:
     home: Главная
+    servers: Сервера
+
+servers:
+    list: Список серверов
+    load: 'Нагрузка:'

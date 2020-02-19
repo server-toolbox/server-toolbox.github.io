@@ -1,2 +1,7 @@
 containers:
     home: Home
+    servers: Servers
+
+servers:
+    list: Server list
+    load: 'Load:'

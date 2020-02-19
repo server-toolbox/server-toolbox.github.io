@@ -12,6 +12,7 @@ export default class Menu extends Component{
             </header>
             <nav>
                 <${Link} icon=home name=home ...${_}/>
+                <${Link} icon=dns name=servers ...${_}/>
             </nav>
         `
     }
