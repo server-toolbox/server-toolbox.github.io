@@ -16,7 +16,7 @@ const colors = [
 
 function setIntervalImmediate(handler, timeout, ...args){
     handler();
-    setInterval(handler, timeout, ...args)
+    return setInterval(handler, timeout, ...args)
 }
 
 function _p(num){
@@ -35,7 +35,7 @@ export default class extends Component{
         data: {},
     }
     componentDidMount(){
-        setIntervalImmediate(async () => {
+        this.interval = setIntervalImmediate(async () => {
             const values = await cpuUsage(this.props.connection);
             const { data } = this.state;
             const keys = Object.keys(data);
@@ -48,6 +48,9 @@ export default class extends Component{
                 })
             })
         }, 5000)
+    }
+    componentWillUnmount(){
+        clearInterval(this.interval)
     }
     render(){
         return html `<${Chart}
