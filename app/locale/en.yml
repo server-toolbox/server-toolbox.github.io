@@ -5,3 +5,8 @@ containers:
 servers:
     list: Server list
     load: 'Load:'
+    host: Host
+    name: Name
+    port: Port (leave empty if standard or if you don't know what to choose)
+    path: Path (must be specified if your sever listen for "ssh-on-ws" connections not at /)
+    ssl: Check if your server encrypts connections with SSL
