@@ -11,7 +11,7 @@ class Percentage extends Component{
     }
 }
 
-const Server = class extends Component{
+class Server extends Component{
     state={
         load: 0,
     }
