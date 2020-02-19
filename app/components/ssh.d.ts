@@ -6,6 +6,9 @@ export type Helpers = {
     cpuUsage: {
         [name: string]: number
     }
+    memUsage: {
+        [name in 'total' | 'used' | 'free' | 'shared' | 'buff_cache' | 'available' | 'totalSwap' | 'usedSwap' | 'freeSwap']: number
+    }
 }
 
 export default class SSH{
