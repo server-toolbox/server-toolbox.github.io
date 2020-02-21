@@ -122,37 +122,42 @@ body{
     background-color: #fff;
 }
 
+input{
+    outline: none;
+}
+
 .server-list{
     > .mdl-block{
-        display: flex;
-        > * {
+        > div{
             display: flex;
-        }
-        > .name{
-            flex-grow: 1;
-            > input{
-                color: inherit;
-                background-color: inherit;
-                border: 0;
-                font: inherit;
-                outline: none;
+            > * {
+                display: flex;
             }
-        }
-        > .load{
-            white-space: pre;
-            > .low{
-                color: #080;
+            > .name{
+                flex-grow: 1;
+                > input{
+                    color: inherit;
+                    background-color: inherit;
+                    border: 0;
+                    font: inherit;
+                }
             }
-            > .average{
-                color: #880;
+            > .load{
+                white-space: pre;
+                > .low{
+                    color: #080;
+                }
+                > .average{
+                    color: #880;
+                }
+                > .high{
+                    color: #800;
+                }
             }
-            > .high{
-                color: #800;
+            > .edit-btn{
+                cursor: pointer;
+                margin-left: 20px;
             }
-        }
-        > .edit-btn{
-            cursor: pointer;
-            margin-left: 20px;
         }
     }
 }

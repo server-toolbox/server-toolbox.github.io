@@ -32,11 +32,34 @@ class Server extends Component{
     }
     render(){
         const { server, translate } = this.props;
-        const { load } = this.state;
+        const { load, edit } = this.state;
+        console.log({this: this})
         return html`<div class=mdl-block>
-            <div class=name><input disabled value=${server.name}/></div>
-            <div class=load>${translate('servers.load')} <${Percentage} value=${load}/></div>
-            <div class=edit-btn><i class=material-icons>keyboard_arrow_down</i></div>
+            <div>
+                <div class=name><input
+                    disabled=${!edit}
+                    value=${server.name}
+                    placeholder=${translate('servers.name')}
+                    onInput=${({ target }) => server.name = target.value}
+                /></div>
+                <div class=load>${translate('servers.load')} <${Percentage} value=${load}/></div>
+                <div class=edit-btn onclick=${() => {
+                    this.setState({ edit: !this.state.edit })
+                }}>
+                    <i class=material-icons>keyboard_arrow_${edit ? 'up' : 'down'}</i>
+                </div>
+            </div>${edit ? html`
+                <div><input
+                    value=${server.host}
+                    placeholder=${translate('servers.host')}
+                    onInput=${({ target }) => server.host = target.value}
+                /></div>
+                <div><input
+                    value=${server.user}
+                    placeholder=${translate('servers.user')}
+                    onInput=${({ target }) => server.user = target.value}
+                /></div>
+            ` : null}
         </div>`
     }
 }
