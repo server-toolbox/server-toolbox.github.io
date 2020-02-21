@@ -124,8 +124,22 @@ body{
 
 .server-list{
     > .mdl-block{
+        display: flex;
+        > * {
+            display: flex;
+        }
+        > .name{
+            flex-grow: 1;
+            > input{
+                color: inherit;
+                background-color: inherit;
+                border: 0;
+                font: inherit;
+                outline: none;
+            }
+        }
         > .load{
-            float: right;
+            white-space: pre;
             > .low{
                 color: #080;
             }
@@ -135,6 +149,10 @@ body{
             > .high{
                 color: #800;
             }
+        }
+        > .edit-btn{
+            cursor: pointer;
+            margin-left: 20px;
         }
     }
 }
