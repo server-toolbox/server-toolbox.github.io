@@ -161,3 +161,40 @@ input{
         }
     }
 }
+
+.material{
+    &.toggle{
+        > label{
+            > i.material-icons{
+                font-size: 32px;
+            }
+        }
+    }
+    > *{
+        display: none;
+    }
+    > input[type=checkbox]{
+        &:checked{
+            ~ label.on{
+                display: flex;
+            }
+        }
+        &:not(:checked){
+            ~ label.off{
+                display: flex;
+            }
+        }
+    }
+    > label{
+        margin-left: 5px;
+        &.on{
+            color: #080;
+        }
+        &.indeterminate{
+            color: #880;
+        }
+        &.off{
+            color: #800;
+        }
+    }
+}
