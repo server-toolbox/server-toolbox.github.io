@@ -2,6 +2,8 @@ import { html, Component } from '../../components/3rd-party/preact.js'
 import { connect } from '../../components/globalState.js'
 import { setIntervalImmediate } from '../../components/helpers.js'
 import { memUsage, cpuUsage } from '../../components/remoteDataControllers.js'
+import Toggle from '../../components/material/toggle/index.js'
+import Switch from '../../components/material/switch/index.js'
 
 class Percentage extends Component{
     render(){
@@ -10,9 +12,18 @@ class Percentage extends Component{
     }
 }
 
+function firstUpper(str){
+    return str[0].toLocaleUpperCase() + str.slice(1)
+}
+
 class Server extends Component{
     state={
         load: 0,
+        authMethod: this.props.server.authMethod,
+    }
+    authMethods = {
+        key: this.props.translate('servers.auth.key'),
+        password: this.props.translate('servers.auth.pass'),
     }
     componentDidMount(){
         this.interval = setIntervalImmediate(async () => {
@@ -32,8 +43,7 @@ class Server extends Component{
     }
     render(){
         const { server, translate } = this.props;
-        const { load, edit } = this.state;
-        console.log({this: this})
+        const { load, edit, authMethod } = this.state;
         return html`<div class=mdl-block>
             <div>
                 <div class=name><input
@@ -55,10 +65,50 @@ class Server extends Component{
                     onInput=${({ target }) => server.host = target.value}
                 /></div>
                 <div><input
+                    type=number
+                    value=${server.port}
+                    placeholder=${translate('servers.port')}
+                    onInput=${({ target }) => server.port = target.value}
+                /></div>
+                <div><input
+                    value=${server.path}
+                    placeholder=${translate('servers.path')}
+                    onInput=${({ target }) => server.path = target.value}
+                /></div>
+                <div><input
                     value=${server.user}
                     placeholder=${translate('servers.user')}
                     onInput=${({ target }) => server.user = target.value}
                 /></div>
+                <div style='position:relative'>${translate('servers.ssl')} <${Toggle}
+                    checked=${server.ssl}
+                    onInput=${({ target }) => server.ssl = target.checked}
+                /></div>
+                <div>${translate('servers.auth.hint')} <${Switch}
+                    active=${authMethod}
+                    values=${this.authMethods}
+                    onInput=${active => {
+                        const nextActive = active === 'key' ? 'password' : 'key';
+                        server.authMethod = nextActive;
+                        this.setState({ authMethod: nextActive })
+                    }}
+                /></div>${authMethod === 'password' ? html`
+                    <div><input
+                        value=${server.password}
+                        placeholder=${firstUpper(translate('servers.auth.pass'))}
+                        onInput=${({ target }) => server.password = target.value}
+                    /></div>
+                ` : html`
+                    <div><textarea
+                        placeholder=${firstUpper(translate('servers.auth.key'))}
+                        onInput=${({ target }) => server.key = target.value}
+                    >${server.key}</textarea></div>
+                    <div><input
+                        value=${server.passphrase}
+                        placeholder=${translate('servers.auth.passphrase')}
+                        onInput=${({ target }) => server.passphrase = target.value}
+                    /></div>
+                `}
             ` : null}
         </div>`
     }

@@ -9,4 +9,11 @@ servers:
     name: Name
     port: Port (leave empty if standard or if you don't know what to choose)
     path: Path (must be specified if your sever listen for "ssh-on-ws" connections not at /)
-    ssl: Check if your server encrypts connections with SSL
+    ssl: 'SSL:'
+    sslWarning: We do not recommend using SSL, since native SSH encryption is sufficient in most cases. In addition, this creates additional load on your server
+    user: User name
+    auth:
+        hint: Auth method
+        key: key
+        passphrase: Key passphrase
+        pass: password

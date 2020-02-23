@@ -6,7 +6,7 @@ import Server from './single.js'
 class Container extends Component{
     render(){
         const { connections, translate } = this.props;
-        return html`<div class='mdl-block server-list'>
+        return html`<div class=server-list>
             <h1>${translate('servers.list')}</h1>
             ${servers.map((server, i) => html`<${Server} server=${server} connection=${connections[i]} translate=${translate}/>`)}
         </div>`
