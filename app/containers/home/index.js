@@ -1,6 +1,5 @@
 import { html, Component } from '../../components/3rd-party/preact.js'
 import CPUUsageChart from '../../components/charts/cpu.js'
-import servers from '../../components/servers.js'
 import { connect } from '../../components/globalState.js'
 
 class Home extends Component{
@@ -12,6 +11,10 @@ class Home extends Component{
     }
 }
 
-export default connect(state => ({
-    connections: servers.map((_, i) => state.get('connection' + i))
-}))(Home)
+export default connect(state => {
+    const servers = state.get('servers') || [];
+    return {
+        servers,
+        connections: servers.map((_, i) => state.get('connection' + i)),
+    }
+})(Home)

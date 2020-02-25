@@ -15,20 +15,24 @@ function log(state, ...args){
 }
 
 class State extends Map{
+    setSilent(key, value){
+        log(this, 'Set (silent) key: %O value %O', key, value);
+        super.set(key, value)
+    }
     set(key, value){
         log(this, 'Set key: %O value %O', key, value);
-        updateConnectedElements();
-        super.set(key, value)
+        super.set(key, value);
+        updateConnectedElements()
     }
     delete(key){
         log(this, 'Deleted key: %O', key);
-        updateConnectedElements();
-        super.delete(key)
+        super.delete(key);
+        updateConnectedElements()
     }
     clear(){
         log(this, 'Cleared');
-        updateConnectedElements();
-        super.clear()
+        super.clear();
+        updateConnectedElements()
     }
 }
 

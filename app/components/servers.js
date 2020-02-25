@@ -1,3 +1,6 @@
+import { GLOBAL_STATE } from './globalState.js'
+import SSH from './ssh.js'
+
 const _prefix = Symbol();
 
 class Server{
@@ -76,8 +79,7 @@ class Server{
     }
 
     formatURL(){
-        const url = new URL('http://l');
-        url.protocol = 'ws' + (this.ssl ? 's' : '');
+        const url = new URL(`${'ws' + (this.ssl ? 's' : '')}://l`);
         url.host = this.host;
         url.port = this.port;
         url.pathname = this.path;
@@ -87,6 +89,22 @@ class Server{
 
 const filter = /^server\d+host$/;
 
-let serverCount = Object.keys(localStorage).filter(filter.test.bind(filter)).length
+const servers = new Array(Object.keys(localStorage).filter(filter.test.bind(filter)).length).fill(0).map((_, i) => new Server('server' + i));
 
-export default [...new Array(serverCount)].map((_, i) => new Server('server' + i))
+servers.forEach(addConnection);
+
+GLOBAL_STATE.set('servers', servers);
+
+export function createNew(){
+    const server = new Server;
+    server.host = '';
+    const index = servers.length;
+    servers.push(server);
+    addConnection(server, index);
+    GLOBAL_STATE.set('servers', servers)
+}
+
+function addConnection(server, index){
+    const connection = new SSH(server);
+    GLOBAL_STATE.setSilent('connection' + index, connection)
+}
