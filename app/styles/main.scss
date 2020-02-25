@@ -189,8 +189,10 @@ h1,h2{
                 color: var(--warning-color);
             }
         }
-        textarea{
+        input, textarea{
             width: 100%;
+        }
+        textarea{
             resize: vertical;
             min-height: 200px;
         }
@@ -207,9 +209,10 @@ h1,h2{
     }
     &.switch{
         display: flex;
-        margin-left: 5px;
+        margin: 5px;
         border: 1px solid var(--theme-color);
         border-radius: 2px;
+        cursor: pointer;
         > *{
             display: block;
             background-color: var(--bg-color);
