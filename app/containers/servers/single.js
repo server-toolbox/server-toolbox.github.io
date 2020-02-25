@@ -88,7 +88,6 @@ class Server extends Component{
                     active=${authMethod}
                     values=${this.authMethods}
                     onInput=${nextActive => {
-                        //const nextActive = active === 'key' ? 'password' : 'key';
                         server.authMethod = nextActive;
                         this.setState({ authMethod: nextActive })
                     }}
