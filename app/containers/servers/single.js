@@ -87,8 +87,8 @@ class Server extends Component{
                 <div>${translate('servers.auth.hint')} <${Switch}
                     active=${authMethod}
                     values=${this.authMethods}
-                    onInput=${active => {
-                        const nextActive = active === 'key' ? 'password' : 'key';
+                    onInput=${nextActive => {
+                        //const nextActive = active === 'key' ? 'password' : 'key';
                         server.authMethod = nextActive;
                         this.setState({ authMethod: nextActive })
                     }}
