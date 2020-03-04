@@ -199,8 +199,34 @@ h1,h2{
     }
 }
 
+button.material{
+    border-radius: 28px;
+    border: 0;
+    background: var(--theme-color);
+    padding: 16px;
+    display: inline-flex;
+    fill: currentColor;
+    text-decoration: none;
+    cursor: pointer;
+    -webkit-tap-highlight-color: rgba(0,0,0,0);
+    box-shadow: 0 3px 5px -1px rgba(0,0,0,.2), 0 6px 10px 0 rgba(0,0,0,.14), 0 1px 18px 0 rgba(0,0,0,.12);
+    user-select: none;
+    outline: none;
+    transition: filter 0.8s;
+    &:hover{
+        filter: brightness(135%);
+    }
+    &:active {
+        filter: brightness(185%);
+        transition: filter 0s;
+    }
+}
+
 .material{
     &.toggle{
+        > *{
+            display: none;
+        }
         > label{
             > i.material-icons{
                 font-size: 32px;
@@ -214,7 +240,6 @@ h1,h2{
         border-radius: 2px;
         cursor: pointer;
         > *{
-            display: block;
             background-color: var(--bg-color);
             color: var(--theme-color);
             padding: 2px;
@@ -224,10 +249,13 @@ h1,h2{
             color: var(--bg-color);
         }
     }
-    > *{
-        display: none;
+    &:not(:not(button)){
+        background: red;
     }
     > input[type=checkbox]{
+        ~ label{
+            display: none;
+        }
         &:checked{
             ~ label.on{
                 display: flex;
