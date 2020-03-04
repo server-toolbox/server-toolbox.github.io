@@ -57,7 +57,7 @@ body{
                 color: var(--menu-item-icon-color);
                 margin-right: 32px;
             }
-            &:hover{
+            &:hover, &.active{
                 background-color: #fff2;
             }
         }
