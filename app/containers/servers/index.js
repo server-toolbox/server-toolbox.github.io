@@ -1,6 +1,8 @@
 import { html, Component } from '../../components/3rd-party/preact.js'
 import { connect } from '../../components/globalState.js'
 import Server from './single.js'
+import Button from '../../components/material/button/index.js'
+import { createNew } from '../../components/servers.js'
 
 class Container extends Component{
     render(){
@@ -8,6 +10,7 @@ class Container extends Component{
         return html`<div class=server-list>
             <h1>${translate('servers.list')}</h1>
             ${servers.map((server, i) => html`<${Server} server=${server} connection=${connections[i]} translate=${translate}/>`)}
+            <${Button} class=add-server-btn icon=add onclick=${createNew}/>
         </div>`
     }
 }
