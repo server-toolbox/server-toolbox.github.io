@@ -1,0 +1,19 @@
+:root{
+    --bg-color: #f3f3f3;
+    --theme-color: #37474f;
+    --menu-bg: var(--theme-color);
+    --menu-head-bg: #263238;
+    --menu-item-color: #98a0a4;
+    --menu-item-icon-color: #78909c;
+    --text-light: #eceff1;
+    --good-color: #080;
+    --warning-color: #cab204;
+    --error-color: #800;
+    --scrollbar-size: .375rem;
+    --scrollbar-minlength: 1.5rem; /* Minimum length of scrollbar thumb (width of horizontal, height of vertical) */
+    --scrollbar-ff-width: thin; /* FF-only accepts auto, thin, none */
+    --scrollbar-track-color: transparent;
+    --scrollbar-color: rgba(0,0,0,.2);
+    --scrollbar-color-hover: rgba(0,0,0,.3);
+    --scrollbar-color-active: rgb(0,0,0);
+}

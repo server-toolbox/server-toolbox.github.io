@@ -2,7 +2,14 @@ import { registerAsyncComponent } from '../globalState.js'
 import sass from './sass.js'
 import { styles } from '../path.js'
 
-registerAsyncComponent('styles', (async () => {
-    const src = await fetch(styles + '/main.scss').then(r => r.text())
-    return (await sass).compile(src)
-})())
+async function toCSS(fname){
+    const src = await fetch(styles + '/' + fname).then(r => r.text());
+    const Sass = await sass;
+    return Sass.compile(src)
+}
+
+registerAsyncComponent('styles', (async () => (await Promise.all([
+    'global-vars.scss',
+    'app.scss',
+    'material-design-nano.scss',
+].map(toCSS))).join('\n'))())

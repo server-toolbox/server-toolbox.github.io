@@ -5,7 +5,7 @@ const sassDir = components + '/3rd-party/sass';
 
 function callbackToPromise(f){
     return (...args) => new Promise((resolve, reject) => {
-        f(...args, ({ status, message, text }) => {
+        f(...args, ({ status, message, text } = {}) => {
             if(!status) resolve(text);
             else reject(new Error(message))
         })
@@ -20,6 +20,7 @@ async function module(){
         const module = {exports: {}};
         f(module, module.exports, sassDir);
         const Sass = new module.exports;
+        await callbackToPromise(Sass.options)({ style: '3' }); // compressed by default
         return asThread({
             compile: callbackToPromise(Sass.compile)
         }, script)

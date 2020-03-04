@@ -1,0 +1,78 @@
+button.material{
+    border-radius: 28px;
+    border: 0;
+    background: var(--theme-color);
+    padding: 16px;
+    display: inline-flex;
+    color: var(--bg-color);
+    text-decoration: none;
+    cursor: pointer;
+    -webkit-tap-highlight-color: rgba(0,0,0,0);
+    box-shadow: 0 3px 5px -1px rgba(0,0,0,.2), 0 6px 10px 0 rgba(0,0,0,.14), 0 1px 18px 0 rgba(0,0,0,.12);
+    user-select: none;
+    outline: none;
+    transition: filter 0.8s;
+    &:hover{
+        filter: brightness(135%);
+    }
+    &:active {
+        filter: brightness(185%);
+        transition: filter 0s;
+    }
+}
+
+.material{
+    &.toggle{
+        > *{
+            display: none;
+        }
+        > label{
+            > i.material-icons{
+                font-size: 32px;
+            }
+        }
+    }
+    &.switch{
+        display: flex;
+        margin: 5px;
+        border: 1px solid var(--theme-color);
+        border-radius: 2px;
+        cursor: pointer;
+        > *{
+            background-color: var(--bg-color);
+            color: var(--theme-color);
+            padding: 2px;
+        }
+        > .active{
+            background-color: var(--theme-color);
+            color: var(--bg-color);
+        }
+    }
+    > input[type=checkbox]{
+        ~ label{
+            display: none;
+        }
+        &:checked{
+            ~ label.on{
+                display: flex;
+            }
+        }
+        &:not(:checked){
+            ~ label.off{
+                display: flex;
+            }
+        }
+    }
+    > label{
+        margin-left: 5px;
+        &.on{
+            color: var(--good-color);
+        }
+        &.indeterminate{
+            color: var(--warning-color);
+        }
+        &.off{
+            color: var(--error-color);
+        }
+    }
+}
