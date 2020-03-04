@@ -199,13 +199,19 @@ h1,h2{
     }
 }
 
+.add-server-btn{
+    position: fixed;
+    bottom: 16px;
+    right: 16px;
+}
+
 button.material{
     border-radius: 28px;
     border: 0;
     background: var(--theme-color);
     padding: 16px;
     display: inline-flex;
-    fill: currentColor;
+    color: var(--bg-color);
     text-decoration: none;
     cursor: pointer;
     -webkit-tap-highlight-color: rgba(0,0,0,0);
