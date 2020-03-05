@@ -2,7 +2,7 @@ import { html, render } from './components/3rd-party/preact.js'
 import App from './containers/main.js'
 import Head from './containers/head.js'
 import { waitForAsyncComponents } from './components/globalState.js'
-import { app } from './components/path.js'
+import { root } from './components/path.js'
 import './components/async/index.js'
 import './components/servers.js'
 
