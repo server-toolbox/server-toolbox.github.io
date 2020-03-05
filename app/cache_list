@@ -51,5 +51,7 @@ app/components/selfResolvingPromise.js
 app/components/ssh.js
 app/components/yaml.js
 index.html
+icons/icon-512.png
+icons/icon-192.png
 manifest.json
 sw.js
