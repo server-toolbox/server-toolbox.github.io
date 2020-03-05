@@ -1,7 +1,7 @@
 containers:
     home: Главная
     servers: Сервера
-    docker: Docker
+    containers: Контейнеры
 
 servers:
     list: Список серверов
