@@ -4,10 +4,12 @@
     <script>if ('serviceWorker' in navigator) navigator.serviceWorker.register('/sw.js');</script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
     <meta name="mobile-web-app-capable" content="yes">
+    <meta name="theme-color" content="#37474f">
     <title>Server Toolbox</title>
     <link href="https://fonts.googleapis.com/css?family=Roboto:regular,bold,italic,thin,light,bolditalic,black,medium" rel="stylesheet">
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <link rel="manifest" href="/manifest.json">
+    <link rel="apple-touch-icon" href="/icons/icon-192.png">
 </head>
 <body>
     <style>
@@ -57,8 +59,17 @@ html, body{
     transform: rotate(360deg);
   }
 }
+noscript{
+  background: #f3f3f3;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
     </style>
     <div class="lds-ring"><div></div><div></div><div></div><div></div></div>
     <script src="./app/index.js" type="module"></script>
+    <noscript>This app doesn't work without JS. Sorry</noscript>
 </body>
 </html>
