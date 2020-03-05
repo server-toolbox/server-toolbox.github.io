@@ -1,5 +1,6 @@
 button.material{
     border-radius: 28px;
+    align-items: center;
     border: 0;
     background: var(--theme-color);
     padding: 16px;
@@ -19,6 +20,9 @@ button.material{
         filter: brightness(185%);
         transition: filter 0s;
     }
+    > span {
+        font-size: 18px;
+    }
 }
 
 .material{
@@ -36,7 +40,7 @@ button.material{
         display: flex;
         margin: 5px;
         border: 1px solid var(--theme-color);
-        border-radius: 2px;
+        border-radius: 1px;
         cursor: pointer;
         > *{
             background-color: var(--bg-color);
