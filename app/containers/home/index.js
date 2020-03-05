@@ -5,7 +5,7 @@ import { connect } from '../../components/globalState.js'
 class Home extends Component{
     render(){
         const { connections } = this.props;
-        return html`<div class=mdl-block>
+        return html`<div class='material block'>
             <${CPUUsageChart} connection=${connections[0]}/>
         </div>`
     }

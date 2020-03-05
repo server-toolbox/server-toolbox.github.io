@@ -44,7 +44,7 @@ class Server extends Component{
     render(){
         const { server, translate } = this.props;
         const { load, edit, authMethod } = this.state;
-        return html`<div class=mdl-block>
+        return html`<div class='material block'>
             <div>
                 <div class=name><input
                     disabled=${!edit}
