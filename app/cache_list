@@ -51,3 +51,4 @@ app/components/selfResolvingPromise.js
 app/components/ssh.js
 app/components/yaml.js
 index.html
+manifest.json
