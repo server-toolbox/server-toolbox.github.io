@@ -53,9 +53,12 @@ body{
             flex-direction: row;
             align-items: center;
             cursor: pointer;
-            > i{
+            > *{
                 color: var(--menu-item-icon-color);
                 margin-right: 32px;
+                height: 24px;
+                width: 24px;
+                fill: currentColor;
             }
             &:hover, &.active{
                 background-color: #fff2;

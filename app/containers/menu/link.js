@@ -6,7 +6,7 @@ class Link extends Component{
         const { translate, icon, name, setMainContainerState, container } = this.props;
         const active = container === name;
         return html`<a onclick=${() => setMainContainerState({ container: name })} class=${active ? 'active' : ''}>
-            <i class=material-icons role=presentation>${icon}</i>
+            ${typeof icon === 'string' ? html`<i class=material-icons role=presentation>${icon}</i>` : icon}
             ${translate('containers.' + name)}
         </a>`
     }

@@ -1,6 +1,7 @@
 containers:
     home: Home
     servers: Servers
+    docker: Docker
 
 servers:
     list: Server list
