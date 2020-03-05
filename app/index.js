@@ -7,7 +7,7 @@ import './components/async/index.js'
 import './components/servers.js'
 
 if ('serviceWorker' in navigator){
-    navigator.serviceWorker.register(root + '/sw.js', { scope: '/', type:'module' }).then(reg => {
+    navigator.serviceWorker.register(root + '/sw.js', { scope: '/' }).then(reg => {
         if(reg.installing){
             console.info('Service worker installing')
         } else if(reg.waiting){

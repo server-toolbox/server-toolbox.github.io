@@ -1,8 +1,6 @@
-import { root, app } from './app/components/path.js'
-
 async function renewCache(){
-    const [ list, cache ] = await Promise.all([fetch(app + '/cache_list').then(r => r.text()), caches.open('v1')]);
-    return cache.addAll(list.split('\n').filter(v => v !== '').map(v => root + '/' + v))
+    const [ list, cache ] = await Promise.all([fetch('/app/cache_list').then(r => r.text()), caches.open('v1')]);
+    return cache.addAll(list.split('\n').filter(v => v !== '').map(v => '/' + v))
 }
 
 async function respond(request, response){
