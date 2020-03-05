@@ -1,7 +1,10 @@
 containers:
     home: Главная
-    servers: Сервера
+    servers: Серверы
     containers: Контейнеры
+    storage: Накопители
+    devices: Устройства
+    system: Система
 
 servers:
     list: Список серверов

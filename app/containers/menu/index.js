@@ -14,6 +14,9 @@ export default class Menu extends Component{
                 <${Link} icon=home name=home ...${_}/>
                 <${Link} icon=storage name=servers ...${_}/>
                 <${Link} icon=developer_board name=containers ...${_}/>
+                <${Link} icon=sd_storage name=storage ...${_}/>
+                <${Link} icon=device_hub name=devices ...${_}/>
+                <${Link} icon=memory name=system ...${_}/>
             </nav>
         `
     }

@@ -2,6 +2,9 @@ containers:
     home: Home
     servers: Servers
     containers: Containers
+    storage: Storage
+    devices: Devices
+    system: System
 
 servers:
     list: Server list
