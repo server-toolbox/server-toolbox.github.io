@@ -1,6 +1,6 @@
 async function renewCache(){
     const [ list, cache ] = await Promise.all([fetch('/app/cache_list').then(r => r.text()), caches.open('v1')]);
-    return cache.addAll(list.split('\n').filter(v => v !== '').map(v => '/' + v))
+    return cache.addAll(list.split('\n').filter(v => v !== '').map(v => /^https?:\/\//.test(v) ? v : ('/' + v)))
 }
 
 async function respond(request, response){
