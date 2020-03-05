@@ -10,7 +10,7 @@ class Link extends Component{
     render(){
         const { icon, name, setMainContainerState, container } = this.props;
         const active = container === name;
-        return html`<a onclick=${() => setMainContainerState({ container: name, headingText: this.name })} class=${active ? 'active' : ''}>
+        return html`<a onclick=${() => setMainContainerState({ container: name, headingText: this.name, menuActive: false })} class=${active ? 'active' : ''}>
             ${typeof icon === 'string' ? html`<i class=material-icons role=presentation>${icon}</i>` : icon}
             ${this.name}
         </a>`
