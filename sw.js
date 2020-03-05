@@ -1,4 +1,4 @@
-import { root, app } from './components/path.js'
+import { root, app } from './app/components/path.js'
 
 async function renewCache(){
     const [ list, cache ] = await Promise.all([fetch(app + '/cache_list').then(r => r.text()), caches.open('v1')]);

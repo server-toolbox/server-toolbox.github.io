@@ -14,7 +14,6 @@ app/containers/servers/index.js
 app/containers/servers/single.js
 app/index.js
 app/cache_list
-app/sw.js
 app/components/helpers.js
 app/components/charts/cpu.js
 app/components/path.js
@@ -53,3 +52,4 @@ app/components/ssh.js
 app/components/yaml.js
 index.html
 manifest.json
+sw.js
