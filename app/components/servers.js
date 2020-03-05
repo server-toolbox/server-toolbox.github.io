@@ -96,9 +96,9 @@ servers.forEach(addConnection);
 GLOBAL_STATE.set('servers', servers);
 
 export function createNew(){
-    const server = new Server;
-    server.host = '';
     const index = servers.length;
+    const server = new Server('server' + index);
+    server.host = '';
     servers.push(server);
     addConnection(server, index);
     GLOBAL_STATE.set('servers', servers)
