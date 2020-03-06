@@ -25,6 +25,7 @@ app/components/3rd-party/sass/sass.worker.js
 app/components/3rd-party/preact.js
 app/components/3rd-party/ssh2.js
 app/components/3rd-party/js-yaml.min.js
+app/components/notify.js
 app/components/remoteDataControllers.js
 app/components/async/styles.js
 app/components/async/index.js
