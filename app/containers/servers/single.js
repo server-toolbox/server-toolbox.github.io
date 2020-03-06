@@ -4,6 +4,7 @@ import { setIntervalImmediate } from '../../components/helpers.js'
 import { memUsage, cpuUsage } from '../../components/remoteDataControllers.js'
 import Toggle from '../../components/material/toggle/index.js'
 import Switch from '../../components/material/switch/index.js'
+import notify from '../../components/notify.js'
 
 class Percentage extends Component{
     render(){
@@ -82,7 +83,13 @@ class Server extends Component{
                 /></div>
                 <div style='position:relative'>${translate('servers.ssl')} <${Toggle}
                     checked=${server.ssl}
-                    onInput=${({ target }) => server.ssl = target.checked}
+                    onInput=${({ target: { checked } }) => {
+                        if(checked) notify({
+                            title: 'SSL Warning',
+                            body: translate('servers.sslWarning'),
+                        });
+                        server.ssl = checked
+                    }}
                 /></div>
                 <div>${translate('servers.auth.hint')} <${Switch}
                     active=${authMethod}
