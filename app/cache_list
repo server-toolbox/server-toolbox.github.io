@@ -53,5 +53,6 @@ app/components/yaml.js
 index.html
 icons/icon-512.png
 icons/icon-192.png
+jsconfig.json
 manifest.json
 sw.js

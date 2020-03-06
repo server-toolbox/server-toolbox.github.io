@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <head>
     <meta charset="UTF-8">
-    <script>if ('serviceWorker' in navigator) navigator.serviceWorker.register('/sw.js');</script>
+    <script>window.swRegistration=new Promise(_=>{if('serviceWorker'in navigator)_(navigator.serviceWorker.register('/sw.js'))})</script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
     <meta name="mobile-web-app-capable" content="yes">
     <meta name="theme-color" content="#37474f">
