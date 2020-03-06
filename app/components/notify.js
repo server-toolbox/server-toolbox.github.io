@@ -1,8 +1,9 @@
-const pushSubscription = swRegistration.then(reg => reg.pushManager.subscribe());
+Notification.requestPermission();
 
 export default async message => {
-    console.log('PUSHING MESSAGE', message, 'with subscription', pushSubscription);
-    const reg = await swRegistration;
+    if(!window.notifyPermission) return;
+    console.log('PUSHING MESSAGE', message);
+    const reg = await window.swRegistration;
     const { title } = message;
     delete message.title;
     return reg.showNotification(title, message)
