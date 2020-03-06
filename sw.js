@@ -1,4 +1,4 @@
-async function renewCache(){
+async function setCache(){
     const [ list, cache ] = await Promise.all([fetch('/app/cache_list').then(r => r.text()), caches.open('v1')]);
     return cache.addAll(list.split('\n').filter(v => v !== '').map(v => /^https?:\/\//.test(v) ? v : ('/' + v)))
 }
@@ -18,6 +18,6 @@ async function respond(request, response){
     }
 }
 
-self.addEventListener('install', e => e.waitUntil(renewCache()));
+self.addEventListener('install', e => e.waitUntil(setCache()));
 
 self.addEventListener('fetch', e => e.respondWith(caches.match(e.request).then(respond.bind(null, e.request))));
