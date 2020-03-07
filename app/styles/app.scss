@@ -188,6 +188,16 @@ body{
     right: 16px;
 }
 
+.cpu-usage{
+    > div{
+        display: flex;
+        > div{
+            min-width: 34%;
+            flex-grow: 1;
+        }
+    }
+}
+
 @media (max-width: 1019px){
     // mobile and tablet
     #menu{

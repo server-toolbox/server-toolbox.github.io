@@ -21,3 +21,6 @@ servers:
         key: ключ
         passphrase: Пароль ключа
         pass: пароль
+
+dashboard:
+    cpuUsage: Использование процессора

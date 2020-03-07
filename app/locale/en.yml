@@ -21,3 +21,6 @@ servers:
         key: key
         passphrase: Key passphrase
         pass: password
+
+dashboard:
+    cpuUsage: CPU Usage
