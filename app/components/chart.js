@@ -59,11 +59,11 @@ export default class extends Component{
             <${Line} height=105.3/>
             <${Line} height=144.7/>
             <${Line} height=184.3/>
-            <${Text} x=485 y=29.3333>${valuesProcessor(maxVal)}</${Text}>
-            <${Text} x=485 y=69>${valuesProcessor(maxVal / 5 * 4)}</${Text}>
-            <${Text} x=485 y=109.3333>${valuesProcessor(maxVal / 5 * 3)}</${Text}>
-            <${Text} x=485 y=149>${valuesProcessor(maxVal / 5 * 2)}</${Text}>
-            <${Text} x=485 y=188.3333>${valuesProcessor(maxVal / 5)}</${Text}>
+            <${Text} x=475 y=29.3333>${valuesProcessor(maxVal)}</${Text}>
+            <${Text} x=475 y=69>${valuesProcessor(maxVal / 5 * 4)}</${Text}>
+            <${Text} x=475 y=109.3333>${valuesProcessor(maxVal / 5 * 3)}</${Text}>
+            <${Text} x=475 y=149>${valuesProcessor(maxVal / 5 * 2)}</${Text}>
+            <${Text} x=475 y=188.3333>${valuesProcessor(maxVal / 5)}</${Text}>
             ${ names }
             ${ polygons }
         </svg>`

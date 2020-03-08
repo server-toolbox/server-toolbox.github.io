@@ -79,6 +79,7 @@ body{
             font-size: 20px;
             align-items: center;
             padding: 0 40px;
+            position: relative;
             > button.menu{
                 display: none;
             }
@@ -229,7 +230,6 @@ body{
         + div{
             > header{
                 padding: 0 16px 0 72px;
-                position: relative;
                 > button.menu{
                     display: unset;
                     width: 48px;
