@@ -192,6 +192,7 @@ body{
 .cpu-usage, .mem-usage{
     > div{
         display: flex;
+        flex-wrap: wrap;
         > div{
             min-width: 34%;
             flex-grow: 1;
@@ -241,6 +242,13 @@ body{
                     background-color: transparent;
                     color: var(--header-text-color);
                 }
+            }
+        }
+    }
+    .cpu-usage, .mem-usage{
+        > div{
+            > div{
+                min-width: 51%;
             }
         }
     }
