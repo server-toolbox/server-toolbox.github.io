@@ -1,15 +1,11 @@
 import { html, Component } from '../../components/3rd-party/preact.js'
 import Chart from '../chart.js'
 import { memUsage } from '../remoteDataControllers.js'
-import { setIntervalImmediate, formatTime } from '../helpers.js'
-
-function humanify(num){
-    return '1G'
-}
+import { setIntervalImmediate, formatTime, humanifySize } from '../helpers.js'
 
 const colors = [
     '#ff08',
-    '#00f8',
+    '#3ea4de54',
 ]
 
 export default class extends Component{
@@ -40,7 +36,7 @@ export default class extends Component{
             colors=${colors}
             textColor=#888
             maxVal=${this.maxVal}
-            valuesProcessor=${humanify}
+            valuesProcessor=${n => humanifySize(n * 1024)}
         />`
     }
 }

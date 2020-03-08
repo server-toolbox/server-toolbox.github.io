@@ -23,4 +23,5 @@ servers:
         pass: password
 
 dashboard:
-    cpuUsage: CPU Usage
+    cpuUsage: CPU usage
+    memUsage: Memory usage

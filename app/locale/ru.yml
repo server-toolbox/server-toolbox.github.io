@@ -24,3 +24,4 @@ servers:
 
 dashboard:
     cpuUsage: Использование процессора
+    memUsage: Использование памяти
