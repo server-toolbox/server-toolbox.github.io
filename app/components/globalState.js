@@ -7,14 +7,15 @@ function updateConnectedElements(){
     for(const [ element ] of connectedElements) element.forceUpdate()
 }
 
-function log(state, ...args){
-    console.group('GLOBAL_STATE');
-    console.log(...args);
-    console.log('STATE: %O', new Map(state));
-    console.groupEnd()
-}
+const initial = [
+    [ 'devmode', Boolean(+(localStorage.getItem('devmode') || '')) ],
+];
 
 class State extends Map{
+    constructor(){
+        super();
+        for(const [key, val] of initial) super.set(key, val)
+    }
     setSilent(key, value){
         log(this, 'Set (silent) key: %O value %O', key, value);
         super.set(key, value)
@@ -37,6 +38,14 @@ class State extends Map{
 }
 
 export const GLOBAL_STATE = new State();
+
+function log(state, ...args){
+    if(!GLOBAL_STATE.get('devmode')) return;
+    console.group('GLOBAL_STATE');
+    console.log(...args);
+    console.log('STATE: %O', new Map(state));
+    console.groupEnd()
+}
 
 let modulesRegister = Object.create(null);
 let asyncComponentsLoaded = false;

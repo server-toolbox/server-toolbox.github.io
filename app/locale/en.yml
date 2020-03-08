@@ -25,3 +25,6 @@ servers:
 dashboard:
     cpuUsage: CPU usage
     memUsage: Memory usage
+
+etc:
+    devmode: Developer mode

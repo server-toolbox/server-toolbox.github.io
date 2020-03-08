@@ -1,9 +1,11 @@
 import { html, Component } from '../../components/3rd-party/preact.js'
 import Link from './link.js'
+import { GLOBAL_STATE, connect } from '../../components/globalState.js'
+import Switch from '../../components/material/toggle/index.js'
 
-export default class Menu extends Component{
+class Menu extends Component{
     render(){
-        const { setMainContainerState, container } = this.props;
+        const { setMainContainerState, container, devmode, translate } = this.props;
         const _ = { setMainContainerState, container };
         return html`
             <header>
@@ -18,6 +20,22 @@ export default class Menu extends Component{
                 <${Link} icon=device_hub name=devices ...${_}/>
                 <${Link} icon=memory name=system ...${_}/>
             </nav>
+            <div>
+                <a class=devmode-toggle onclick=${() => {
+                    const next = !devmode;
+                    localStorage.devmode = '' + +next;
+                    GLOBAL_STATE.set('devmode', next)
+                }}>
+                    <i class=material-icons role=presentation>bug_report</i>
+                    ${translate('etc.devmode')}
+                    <${Switch} checked=${devmode}/>
+                </a>
+            </div>
         `
     }
 }
+
+export default connect(state => ({
+    devmode: state.get('devmode'),
+    translate: state.get('translate'),
+}))(Menu)

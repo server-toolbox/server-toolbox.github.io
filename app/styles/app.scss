@@ -45,14 +45,14 @@ body{
         box-sizing: border-box;
         flex-shrink: 0;
         flex-direction: column;
-        > a{
+        > a, + div > a{
             color: var(--menu-item-color);
             padding: 16px 40px;
+            cursor: pointer;
             font-weight: 500;
             display: flex;
             flex-direction: row;
             align-items: center;
-            cursor: pointer;
             > *{
                 color: var(--menu-item-icon-color);
                 margin-right: 32px;
@@ -61,8 +61,16 @@ body{
                 fill: currentColor;
             }
             &:hover, &.active{
-                background-color: #fff2;
+                filter: brightness(135%);
             }
+            &.devmode-toggle{
+                > i.material.toggle{
+                    pointer-events: none;
+                }
+            }
+        }
+        + div{
+            background-color: var(--menu-bg);
         }
     }
     + div{

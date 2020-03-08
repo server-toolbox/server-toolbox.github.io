@@ -1,4 +1,5 @@
 import allowedNames from './allowedNames.js'
+import { GLOBAL_STATE } from '../globalState.js'
 
 const timeStyle = 'color: grey; font-weight: normal;';
 
@@ -48,6 +49,9 @@ class AsyncConsole{
 
 class CallbackConsole{}
 
+const productionConsole = Object.create(null);
+function emptyFunction(){}
+
 allowedNames.forEach(method => {
     AsyncConsole.prototype[method] = function(...args){
         const stack = this[_stack];
@@ -60,10 +64,12 @@ allowedNames.forEach(method => {
         console[method].apply(null, args);
         console.groupEnd()
     }
+    productionConsole[method] = emptyFunction
 });
 
 export default asyncFN => {
     return async (...args) => {
+        if(!GLOBAL_STATE.get('devmode')) return await asyncFN(productionConsole).apply(null, args);
         const console = new AsyncConsole;
         const targetF = asyncFN(console);
         console[_name] = targetF.name;
@@ -76,6 +82,7 @@ export default asyncFN => {
 
 export function callbackLogger(asyncFN){
     return (...args) => {
+        if(!GLOBAL_STATE.get('devmode')) return asyncFN(productionConsole).apply(null, args);
         const console = new CallbackConsole;
         const targetF = asyncFN(console);
         console[_name] = targetF.name;

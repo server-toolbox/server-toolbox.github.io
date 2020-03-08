@@ -25,3 +25,6 @@ servers:
 dashboard:
     cpuUsage: Использование процессора
     memUsage: Использование памяти
+
+etc:
+    devmode: Режим разработчика
