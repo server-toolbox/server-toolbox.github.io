@@ -1,8 +1,9 @@
 import { html, Component } from '../components/3rd-party/preact.js'
+import { connect } from '../components/globalState.js'
 
 let currentHeader;
 
-export default class extends Component{
+class Header extends Component{
     state = {}
     componentDidMount(){
         currentHeader = this;
@@ -11,11 +12,14 @@ export default class extends Component{
         currentHeader = null;
     }
     render(){
-        const { text, menuClick } = this.props;
+        const { text, menuClick, devmode } = this.props;
         const { text: replaceText } = this.state;
         return html`
             <button class=menu onclick=${menuClick}><i class=material-icons>menu</i></button>
-            ${replaceText === undefined ? text : replaceText }
+            <div id=header-content>
+                <div>${replaceText === undefined ? text : replaceText }</div>
+                <button class=${devmode ? 'active' : ''}><i class=material-icons role=presentation>build</i></button>
+            </div>
         `
     }
 }
@@ -28,3 +32,7 @@ export class HeaderText{
         currentHeader && currentHeader.setState({ text: undefined })
     }
 }
+
+export default connect(state => ({
+    devmode: state.get('devmode'),
+}))(Header)
