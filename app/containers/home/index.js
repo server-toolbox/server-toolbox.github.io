@@ -1,5 +1,6 @@
 import { html, Component } from '../../components/3rd-party/preact.js'
 import CPUUsageChart from '../../components/charts/cpu.js'
+import MemoryUsageChart from '../../components/charts/memory.js'
 import { connect } from '../../components/globalState.js'
 
 class Home extends Component{
@@ -9,6 +10,12 @@ class Home extends Component{
             <h2>${translate('dashboard.cpuUsage')}</h2>
             <div>
                 ${connections.map((conn, i) => html`<div class='material block'><span>${servers[i].name}<//><${CPUUsageChart} connection=${conn}/><//>`)}
+            </div>
+        </div>
+        <div class='material block mem-usage'>
+            <h2>${translate('dashboard.memUsage')}</h2>
+            <div>
+                ${connections.map((conn, i) => html`<div class='material block'><span>${servers[i].name}<//><${MemoryUsageChart} connection=${conn}/><//>`)}
             </div>
         </div>`
     }

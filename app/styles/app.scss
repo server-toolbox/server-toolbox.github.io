@@ -188,7 +188,7 @@ body{
     right: 16px;
 }
 
-.cpu-usage{
+.cpu-usage, .mem-usage{
     > div{
         display: flex;
         > div{

@@ -17,9 +17,14 @@ function fixGraphs(graphs){
     return graphs
 }
 
+function emptyProcessor(v){
+    return v
+}
+
 export default class extends Component{
     render(){
         const { colors, maxVal, textColor } = this.props;
+        const valuesProcessor = this.props.valuesProcessor || emptyProcessor;
         const graphs = fixGraphs(this.props.points);
         const names = [],
             pointValues = [],
@@ -54,11 +59,11 @@ export default class extends Component{
             <${Line} height=105.3/>
             <${Line} height=144.7/>
             <${Line} height=184.3/>
-            <${Text} x=485 y=29.3333>${maxVal}</${Text}>
-            <${Text} x=485 y=69>${maxVal / 5 * 4}</${Text}>
-            <${Text} x=485 y=109.3333>${maxVal / 5 * 3}</${Text}>
-            <${Text} x=485 y=149>${maxVal / 5 * 2}</${Text}>
-            <${Text} x=485 y=188.3333>${maxVal / 5}</${Text}>
+            <${Text} x=485 y=29.3333>${valuesProcessor(maxVal)}</${Text}>
+            <${Text} x=485 y=69>${valuesProcessor(maxVal / 5 * 4)}</${Text}>
+            <${Text} x=485 y=109.3333>${valuesProcessor(maxVal / 5 * 3)}</${Text}>
+            <${Text} x=485 y=149>${valuesProcessor(maxVal / 5 * 2)}</${Text}>
+            <${Text} x=485 y=188.3333>${valuesProcessor(maxVal / 5)}</${Text}>
             ${ names }
             ${ polygons }
         </svg>`

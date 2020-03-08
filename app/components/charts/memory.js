@@ -1,18 +1,15 @@
 import { html, Component } from '../../components/3rd-party/preact.js'
 import Chart from '../chart.js'
-import { cpuUsage } from '../remoteDataControllers.js'
+import { memUsage } from '../remoteDataControllers.js'
 import { setIntervalImmediate, formatTime } from '../helpers.js'
 
+function humanify(num){
+    return '1G'
+}
+
 const colors = [
-    '#f008',
+    '#ff08',
     '#00f8',
-    '#0f08',
-    '#f008',
-    '#00f8',
-    '#0f08',
-    '#f008',
-    '#00f8',
-    '#0f08',
 ]
 
 export default class extends Component{
@@ -21,15 +18,15 @@ export default class extends Component{
     }
     componentDidMount(){
         this.interval = setIntervalImmediate(async () => {
-            const values = await cpuUsage(this.props.connection);
+            const { used, total, usedSwap, totalSwap } = await memUsage(this.props.connection);
+            this.maxVal = Math.max(total, totalSwap);
             const { data } = this.state;
             const keys = Object.keys(data);
             let j = 0;
             for(let i = keys.length - 19; i > 0; i--) delete data[keys[j++]];
             this.setState({
                 data: Object.assign({}, this.state.data, {
-                    [formatTime(new Date)]:
-                        Object.keys(values).filter(name => name !== 'cpu').map(name => values[name]),
+                    [formatTime(new Date)]: [ used, usedSwap ],
                 })
             })
         }, 5000)
@@ -42,7 +39,8 @@ export default class extends Component{
             points=${this.state.data}
             colors=${colors}
             textColor=#888
-            maxVal=${100}
+            maxVal=${this.maxVal}
+            valuesProcessor=${humanify}
         />`
     }
 }
