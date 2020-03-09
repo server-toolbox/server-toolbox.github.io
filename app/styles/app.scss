@@ -224,6 +224,9 @@ body{
         align-items: center;
     }
     > button:last-child{
+        background: transparent;
+        border: 0;
+        color: currentColor;
         &:not(.active){
             display: none;
         }
