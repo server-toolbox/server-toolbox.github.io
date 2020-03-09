@@ -17,22 +17,22 @@ class State extends Map{
         for(const [key, val] of initial) super.set(key, val)
     }
     setSilent(key, value){
-        log(this, 'Set (silent) key: %O value %O', key, value);
-        super.set(key, value)
+        super.set(key, value);
+        log(this, 'Set (silent) key: %O value %O', key, value)
     }
     set(key, value){
-        log(this, 'Set key: %O value %O', key, value);
         super.set(key, value);
+        log(this, 'Set key: %O value %O', key, value);
         updateConnectedElements()
     }
     delete(key){
-        log(this, 'Deleted key: %O', key);
         super.delete(key);
+        log(this, 'Deleted key: %O', key);
         updateConnectedElements()
     }
     clear(){
-        log(this, 'Cleared');
         super.clear();
+        log(this, 'Cleared');
         updateConnectedElements()
     }
 }
