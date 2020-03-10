@@ -229,6 +229,7 @@ body{
         color: currentColor;
         padding: 16px;
         margin-right: -16px;
+        display: flex;
         &:not(.active){
             display: none;
         }
@@ -267,7 +268,7 @@ body{
             > header{
                 padding: 0 16px 0 72px;
                 > button.menu{
-                    display: unset;
+                    display: flex;
                     padding: 16px;
                     left: 0;
                     position: absolute;
