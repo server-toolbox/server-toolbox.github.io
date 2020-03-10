@@ -227,6 +227,8 @@ body{
         background: transparent;
         border: 0;
         color: currentColor;
+        padding: 16px;
+        margin-right: -16px;
         &:not(.active){
             display: none;
         }
@@ -266,9 +268,8 @@ body{
                 padding: 0 16px 0 72px;
                 > button.menu{
                     display: unset;
-                    width: 48px;
-                    height: 48px;
-                    left: 4px;
+                    padding: 16px;
+                    left: 0;
                     position: absolute;
                     border: 0;
                     -webkit-tap-highlight-color: transparent;

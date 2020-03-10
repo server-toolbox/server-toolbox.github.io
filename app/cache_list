@@ -15,6 +15,7 @@ app/containers/servers/single.js
 app/index.js
 app/cache_list
 app/components/helpers.js
+app/components/charts/memory.js
 app/components/charts/cpu.js
 app/components/path.js
 app/components/logger/index.js
