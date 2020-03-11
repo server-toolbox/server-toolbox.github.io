@@ -17,4 +17,4 @@ export const styles = app + '/styles'
 
 export const locale = app + '/locale'
 
-export const locale = app + '/icons'
+export const icons = app + '/icons'
