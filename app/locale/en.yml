@@ -28,3 +28,7 @@ dashboard:
 
 etc:
     devmode: Developer mode
+
+devmode:
+    clearSW: Clear service worker
+    clearLS: Clear data

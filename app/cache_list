@@ -35,6 +35,7 @@ app/components/async/dictionary.js
 app/components/globalState.js
 app/components/threads/worker.js
 app/components/material/toggle/index.js
+app/components/material/contextual-button.js
 app/components/material/switch/index.js
 app/components/material/button/index.js
 app/components/ssh/thread.js

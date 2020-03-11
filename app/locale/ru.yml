@@ -28,3 +28,7 @@ dashboard:
 
 etc:
     devmode: Режим разработчика
+
+devmode:
+    clearSW: Очистить сервис-воркер
+    clearLS: Очистить данные

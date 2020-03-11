@@ -1,3 +1,7 @@
+.material{
+    --box-shadow: 0 2px 2px 0 rgba(0,0,0,.14), 0 3px 1px -2px rgba(0,0,0,.2), 0 1px 5px 0 rgba(0,0,0,.12);
+}
+
 button.material{
     border-radius: 28px;
     align-items: center;
@@ -22,6 +26,76 @@ button.material{
     }
     > span {
         font-size: 18px;
+    }
+    &.contextual{
+        > i{
+            pointer-events: none;
+        }
+        + .contextual-popup-bg{
+            position: fixed;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            z-index: 999998;
+            pointer-events: none;
+            + .contextual-popup-fg{
+                pointer-events: none;
+                display: flex;
+                position: fixed;
+                flex-direction: column;
+                justify-content: flex-start;
+                height: calc((var(--child-count) * 48px) + 16px);
+                z-index: 999999;
+                top: calc((var(--btn-y) + var(--btn-height)) * 1px);
+                > ul{
+                    overflow: hidden;
+                    height: 0;
+                    flex-grow: 1;
+                    background-color: #fff;
+                    transition: flex 0.1s linear, padding 0.1s linear;
+                    flex: 0;
+                    box-shadow: var(--box-shadow);
+                    margin: 0;
+                    border-radius: 1px;
+                    padding: 0;
+                    > li{
+                        cursor: pointer;
+                        color: var(--menu-head-bg);
+                        font-size: 14px;
+                        height: 48px;
+                        line-height: 48px;
+                        padding: 0 16px;
+                        margin: 0;
+                        border: none;
+                        &:hover{
+                            background-color: #0000001c;
+                        }
+                    }
+                }
+                > div{
+                    height: 0;
+                }
+                &.align-right{
+                    right: calc((var(--window-width) - var(--btn-x) - var(--btn-width)) * 1px);
+                }
+                &.align-left{
+                    left: calc(var(--btn-x) * 1px);
+                }
+            }
+        }
+        &.open{
+            + .contextual-popup-bg{
+                pointer-events: all;
+                + .contextual-popup-fg{
+                    pointer-events: all;
+                    > ul{
+                        padding: 8px 0;
+                        flex: 1;
+                    }
+                }
+            }
+        }
     }
 }
 
@@ -94,7 +168,7 @@ h1.material,h2.material{
     &.block{
         padding: 8px;
         margin: 8px;
-        box-shadow: 0 2px 2px 0 rgba(0,0,0,.14), 0 3px 1px -2px rgba(0,0,0,.2), 0 1px 5px 0 rgba(0,0,0,.12);
+        box-shadow: var(--box-shadow);
         background-color: #fff;
     }
 }

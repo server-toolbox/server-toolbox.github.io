@@ -13,7 +13,7 @@ export default class extends Component{
         return html`
             <div id=menu class=${menuActive ? 'active' : ''}><div class=bg onclick=${() => this.setState({ menuActive: false })}/><${Menu} setMainContainerState=${this.setState.bind(this)} container=${container}/></div>
             <div>
-                <header><${Head} text=${headingText} menuClick=${() => this.setState({ menuActive: true })}/></header>
+                <header class=material><${Head} text=${headingText} menuClick=${() => this.setState({ menuActive: true })}/></header>
                 <div id=contents><${containers[container]}/></div>
             </div>
         `
