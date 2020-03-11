@@ -13,6 +13,7 @@ app/containers/header.js
 app/containers/servers/index.js
 app/containers/servers/single.js
 app/index.js
+app/icons/ssl-certificate.png
 app/cache_list
 app/components/helpers.js
 app/components/charts/memory.js

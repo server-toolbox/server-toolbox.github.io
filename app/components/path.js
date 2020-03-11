@@ -16,3 +16,5 @@ export const containers = app + '/containers'
 export const styles = app + '/styles'
 
 export const locale = app + '/locale'
+
+export const locale = app + '/icons'
