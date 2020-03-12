@@ -14,6 +14,11 @@ app/containers/servers/index.js
 app/containers/servers/single.js
 app/index.js
 app/icons/ssl-certificate.png
+app/icons/os/linux/debian.svg
+app/icons/os/linux/android.svg
+app/icons/os/linux/manjaro.svg
+app/icons/os/linux/arch.svg
+app/icons/os/linux/ubuntu.svg
 app/cache_list
 app/components/helpers.js
 app/components/charts/memory.js
