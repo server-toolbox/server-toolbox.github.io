@@ -10,6 +10,7 @@ app/containers/main.js
 app/containers/head.js
 app/containers/index.js
 app/containers/header.js
+app/containers/system/index.js
 app/containers/servers/index.js
 app/containers/servers/single.js
 app/index.js
@@ -46,7 +47,10 @@ app/components/material/switch/index.js
 app/components/material/button/index.js
 app/components/ssh/thread.js
 app/components/ssh/parsers/memUsage.js
+app/components/ssh/parsers/_sysInfo_linux.js
+app/components/ssh/parsers/_sysInfo_android.js
 app/components/ssh/parsers/cpuUsage.js
+app/components/ssh/parsers/sysInfo.js
 app/components/yaml/js-yaml.js
 app/components/chart.js
 app/components/icons/docker.js

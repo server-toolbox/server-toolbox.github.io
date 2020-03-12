@@ -9,6 +9,9 @@ export type Helpers = {
     memUsage: {
         [name in 'total' | 'used' | 'free' | 'shared' | 'buff_cache' | 'available' | 'totalSwap' | 'usedSwap' | 'freeSwap']: number
     }
+    sysInfo: {
+        //
+    }
 }
 
 export default class SSH{
