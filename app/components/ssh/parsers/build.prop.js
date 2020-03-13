@@ -10,7 +10,7 @@ function splitLine(line){
 
 function parse(lines){
     const res = {};
-    for(const [ key, data ] of lines.filter(v => !skipLines.test(v)).map(splitLine)){
+    for(const [ key, data ] of lines.split('\n').filter(v => !skipLines.test(v)).map(splitLine)){
         res[key] = data
     }
     return res
@@ -43,19 +43,12 @@ function getCodename(apiLevel){
     return current
 }
 
-export default lines => {
-    const parsed = parse(lines);
+export default data => {
+    const parsed = parse(data);
     return {
         os: {
-            type: 'linux',
-            id: 'android',
-            name: 'Android',
             version: parsed['ro.build.version.release'],
             codename: getCodename(+parsed['ro.build.version.sdk']),
-            links: {
-                home: 'https://www.android.com',
-                support: 'https://support.google.com/android',
-            }
         },
         hardware: {
             brand: parsed['ro.product.brand'],
