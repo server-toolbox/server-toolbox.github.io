@@ -28,6 +28,17 @@ function _sysInfo_memory(client){
     }))
 }
 
+function _sysInfo_kernel(client){
+    return Promise.all([
+        client.exec('uname -s'),
+        client.exec('uname -r'),
+    ]).then(([ name, version ]) => ({
+        os: {
+            kernel: { name, version }
+        }
+    }))
+}
+
 async function _sysInfo(client){
     const env = await client.exec('env');
     let ANDROID_ROOT, ANDROID_DATA;
@@ -49,7 +60,9 @@ async function _sysInfo(client){
         },
         ...await Promise.all([
             client.exec('cat /system/build.prop', {}, 'build.prop'),
+            client.exec('cat /proc/cpuinfo', {}, 'cpuinfo'),
             _sysInfo_memory(client),
+            _sysInfo_kernel(client),
         ]),
     );
     return mergeObjects(
@@ -60,7 +73,9 @@ async function _sysInfo(client){
         },
         ...await Promise.all([
             client.exec('cat /etc/*-release', {}, 'etc_*-release'),
+            client.exec('cat /proc/cpuinfo', {}, 'cpuinfo'),
             _sysInfo_memory(client),
+            _sysInfo_kernel(client),
         ]),
     )
 }
