@@ -17,6 +17,7 @@ export default data => {
         NAME,
         PRETTY_NAME,
         DISTRIB_RELEASE,
+        DISTRIB_CODENAME,
         HOME_URL,
         SUPPORT_URL,
     } = parseLines(data);
@@ -26,6 +27,7 @@ export default data => {
             id: ID in id_mappings ? id_mappings[ID] : ID,
             name: PRETTY_NAME || NAME,
             version: DISTRIB_RELEASE,
+            codename: DISTRIB_CODENAME || DISTRIB_RELEASE,
             links: {
                 home: HOME_URL,
                 support: SUPPORT_URL,
