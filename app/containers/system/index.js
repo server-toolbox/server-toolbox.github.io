@@ -20,18 +20,23 @@ class Home extends Component{
         return servers.map((server, i) => {
             const info = this.state.info[i];
             if(!info) return null;
+            const { os, hardware } = info;
             return html`<div class='material block system-info'>
                 <div class=basename>${server.name}</div>
                 <div>
-                    <div class=osicon style=${`background-image:url(${info.os.icon})`}/>
-                    <div class=osname>${info.os.name} ${info.os.codename}</div>
-                    <div class=osver>${translate('system.os.version')} ${info.os.version}</div>
-                    <div class=ostype>${translate('system.os.type')} ${info.os.type}</div>
-                    <a href=${info.os.links.home} target=blank>${translate('system.os.homepage')}</a>
-                    <a href=${info.os.links.support} target=blank>${translate('system.os.supportpage')}</a>
+                    <div class=osicon style=${`background-image:url(${os.icon})`}/>
+                    <div class=osname>${os.name} ${os.codename}</div>
+                    <div class=osver>${translate('system.os.version')} ${os.version}</div>
+                    <div class=ostype>${translate('system.os.type')} ${os.type}</div>
+                    <a href=${os.links.home} target=blank>${translate('system.os.homepage')}</a>
+                    <a href=${os.links.support} target=blank>${translate('system.os.supportpage')}</a>
                 </div>
-                <div>
-                </div>
+                ${hardware ? html`<div>
+                    ${ hardware.brand && hardware.model ? html`<div class=hwmodel>${hardware.brand} ${hardware.model}</div>` : null}
+                    ${ hardware.ram ? html`<div class=ram><span>${translate('system.hardware.ram')}</span> ${hardware.ram}</div>` : null}
+                    ${ hardware.board ? html`<div class=motherboard><span>${translate('system.hardware.board')}</span> ${hardware.board}</div>` : null}
+                    ${ hardware.cpu ? html`<div class=cpu><span>${translate('system.hardware.cpu')}</span> ${hardware.cpu.type}</div>` : null}
+                </div>` : null}
             </div>`
         })
     }

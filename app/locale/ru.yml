@@ -39,3 +39,7 @@ system:
         version: Версия
         homepage: Домашняя страница
         supportpage: Поддержка
+    hardware:
+        ram: Память
+        board: Плата
+        cpu: Процессор

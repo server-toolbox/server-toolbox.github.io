@@ -254,11 +254,22 @@ body{
             background-repeat: no-repeat;
             background-size: 100% 50%;
         }
-        > .osname{
+        > .osname, > .hwmodel{
             font-weight: bold;
+        }
+        > .hwmodel{
+            text-align: center;
         }
         > a{
             display: block;
+        }
+        &:last-child{
+            text-align: unset;
+        }
+        > div{
+            > span{
+                font-weight: bold;
+            }
         }
     }
 }
