@@ -32,3 +32,10 @@ etc:
 devmode:
     clearSW: Очистить сервис-воркер
     clearLS: Очистить данные
+
+system:
+    os:
+        type: 'Тип ОС:'
+        version: Версия
+        homepage: Домашняя страница
+        supportpage: Поддержка

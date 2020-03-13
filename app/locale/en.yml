@@ -32,3 +32,10 @@ etc:
 devmode:
     clearSW: Clear service worker
     clearLS: Clear data
+
+system:
+    os:
+        type: 'OS type:'
+        version: Version
+        homepage: Homepage
+        supportpage: Support

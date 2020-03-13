@@ -236,6 +236,33 @@ body{
     }
 }
 
+.system-info{
+    display: flex;
+    flex-wrap: wrap;
+    > div{
+        width: 1%;
+        flex-grow: 1;
+        flex-shrink: 1;
+        text-align: center;
+        &.basename{
+            width: 100%;
+            font-weight: bold;
+        }
+        > .osicon{
+            height: 200px;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: 100% 50%;
+        }
+        > .osname{
+            font-weight: bold;
+        }
+        > a{
+            display: block;
+        }
+    }
+}
+
 @media (max-width: 1019px){
     // mobile and tablet
     #menu{
