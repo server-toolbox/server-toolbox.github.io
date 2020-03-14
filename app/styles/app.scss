@@ -13,6 +13,11 @@ body{
     line-height: 20px;
 }
 
+h1, h2{
+    color: var(--theme-color);
+    margin-left: 8px;
+}
+
 #menu{
     width: 240px;
     display: flex;
@@ -206,12 +211,10 @@ body{
 
 .cpu-usage, .mem-usage{
     > div{
-        display: flex;
-        flex-wrap: wrap;
-        > div{
-            min-width: 34%;
-            flex-grow: 1;
-        }
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        grid-column-gap: 0px;
+        grid-row-gap: 0px;
     }
 }
 
@@ -259,9 +262,6 @@ body{
         }
         > .hwmodel{
             text-align: center;
-        }
-        > a{
-            display: block;
         }
         &:last-child{
             text-align: unset;
@@ -320,9 +320,7 @@ body{
     }
     .cpu-usage, .mem-usage{
         > div{
-            > div{
-                min-width: 51%;
-            }
+            grid-template-columns: 1fr;
         }
     }
 }
