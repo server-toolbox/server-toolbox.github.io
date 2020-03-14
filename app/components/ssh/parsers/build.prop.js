@@ -53,6 +53,7 @@ export default data => {
         hardware: {
             brand: parsed['ro.product.brand'],
             model: parsed['ro.product.model'],
+            device: parsed['ro.fota.device'],
             cpu: {
                 type: parsed['ro.product.cpu.abi'],
                 suportedInstructions: parsed['ro.product.cpu.abilist'].split(','),

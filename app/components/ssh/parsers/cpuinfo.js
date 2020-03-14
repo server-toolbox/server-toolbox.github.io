@@ -1,3 +1,5 @@
+import armParse from './cpuinfo_arm.js'
+
 const reg = /^\s*(.*?)\s*:\s*(.*?)\s*$/;
 
 export default lines => {
@@ -18,7 +20,7 @@ export default lines => {
             }
         } else toFill = []
     }
-    data.processors = processors;
+    data.processors = processors.map(armParse);
     return {
         hardware: {
             cpu: {

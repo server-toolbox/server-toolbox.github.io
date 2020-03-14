@@ -43,3 +43,7 @@ system:
         ram: Память
         board: Плата
         cpu: Процессор
+
+errors:
+    not_found: Не найдено
+    unknown: Неизвестно
