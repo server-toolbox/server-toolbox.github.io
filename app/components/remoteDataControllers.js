@@ -85,3 +85,7 @@ export async function sysInfo(client){
     r.os.icon = `${icons}/os/${r.os.type}/${r.os.id}.svg`;
     return r
 }
+
+export function containersList(client){
+    return client.exec("docker inspect --format='{{json .}}' `docker container ls -a --format='{{.ID}}' --no-trunc`", {}, 'docker_container_ls')
+}

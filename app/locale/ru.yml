@@ -47,3 +47,9 @@ system:
 errors:
     not_found: Не найдено
     unknown: Неизвестно
+
+containersContainer:
+    services:
+        id: 'ID:'
+        created: Создан
+        state: Статус
