@@ -274,6 +274,21 @@ h1, h2{
     }
 }
 
+.containers{
+    &.service{
+        background-color: #9696962b;
+        &.running{
+            background-color: #13ff002b;
+        }
+        &.pause, &.partly-running{
+            background-color: #f0ff002b;
+        }
+        &.error{
+            background-color: #ff00002b;
+        }
+    }
+}
+
 @media (max-width: 1019px){
     // mobile and tablet
     #menu{
