@@ -50,17 +50,31 @@ function log(state, ...args){
 let modulesRegister = Object.create(null);
 let asyncComponentsLoaded = false;
 
+const connectedFunc = Symbol();
+const stateDesc = Symbol();
+class ConnectedProto extends Component{
+    componentDidMount(){
+        connectedElements.set(this, undefined)
+    }
+    componentWillUnmount(){
+        connectedElements.delete(this, undefined)
+    }
+    render(){
+        return html`<${this[connectedFunc]} ...${this.props} ...${this[stateDesc](GLOBAL_STATE)}/>`
+    }
+}
+
+function createNamedClass(name){
+    if(!name) name = ' Anonymous class';
+    return { ['Connected' + name]: class extends ConnectedProto{} }['Connected' + name]
+}
+
 export function connect(stateDescriptor){
-    return _ => class extends Component{
-        componentDidMount(){
-            connectedElements.set(this, undefined)
-        }
-        componentWillUnmount(){
-            connectedElements.delete(this, undefined)
-        }
-        render(){
-            return html`<${_} ...${this.props} ...${stateDescriptor(GLOBAL_STATE)}/>`
-        }
+    return _ => {
+        const $ = createNamedClass(_.name);
+        $.prototype[connectedFunc] = _;
+        $.prototype[stateDesc] = stateDescriptor;
+        return $
     }
 }
 
