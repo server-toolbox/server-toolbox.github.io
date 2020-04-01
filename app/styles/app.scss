@@ -1,3 +1,31 @@
+@mixin mask-background($bg-url, $size, $position, $repeat){
+    -webkit-mask-image: url($bg-url);
+    mask-image: url($bg-url);
+    -webkit-mask-repeat: $repeat;
+    mask-repeat: $repeat;
+    -webkit-mask-position: $position;
+    mask-position: $position;
+    -webkit-mask-size: $size;
+    mask-size: $size;
+}
+
+@mixin colored-background($bg-url, $color, $size, $position, $repeat){
+    @include mask-background($bg-url, $size, $position, $repeat);
+    background-color: $color;
+}
+
+@mixin blink-anim($blink-duration, $function){
+    $id: unique-id();
+    animation-name: $id;
+    animation-iteration-count: infinite;
+    animation-timing-function: $function;
+    animation-duration: $blink-duration;
+    @keyframes #{$id}{
+        from { opacity: 1.0 }
+        to { opacity: 0.0 }
+    }
+}
+
 html{
     height: 100%;
 }
@@ -276,15 +304,28 @@ h1, h2{
 
 .containers{
     &.service{
-        background-color: #9696962b;
+        background-color: #9696962b !important;
         &.running{
-            background-color: #13ff002b;
+            background-color: #13ff002b !important;
         }
-        &.pause, &.partly-running{
-            background-color: #f0ff002b;
+        &.pause, &.partial-running{
+            background-color: #c9d60042 !important;
         }
         &.error{
-            background-color: #ff00002b;
+            background-color: #c700005c !important;
+        }
+        &.restarting{
+            position: relative;
+            &::after{
+                content: '';
+                position: absolute;
+                top: 2px;
+                right: 2px;
+                height: 24px;
+                width: 24px;
+                @include colored-background('./app/icons/restart.svg', #000, contain, center, no-repeat);
+                @include blink-anim(2s, cubic-bezier(1.0,0,0,1.0));
+            }
         }
     }
 }

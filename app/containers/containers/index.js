@@ -63,12 +63,16 @@ class Services extends Component{
 class Containers extends Component{
     state = {}
     render(){
-        const { connections, servers } = this.props;
-        return connections.map((client, i) => html`
-            <${Services} client=${client} server=${servers[i].name}/>
-        `).concat([
-            html`<${Ungrouped}/>`
-        ])
+        const { connections, servers, translate } = this.props;
+        return html`
+            <div class='material block'>
+                <h4>${translate('containersContainer.servicesListHeading')}</h4>
+                ${connections.map((client, i) => html`
+                    <${Services} client=${client} server=${servers[i].name}/>
+                `)}
+            </div>
+            <${Ungrouped}/>
+        `
     }
 }
 
@@ -77,5 +81,6 @@ export default connect(state => {
     return {
         servers,
         connections: servers.map((_, i) => state.get('connection' + i)),
+        translate: state.get('translate'),
     }
 })(Containers)

@@ -5,3 +5,5 @@ export function setIntervalImmediate(...args: FunctionArgs<typeof setInterval>):
 export function formatTime(date: Date): string
 
 export function humanifySize(bytes: number): string
+
+export function cssifyName(jsname: string): string

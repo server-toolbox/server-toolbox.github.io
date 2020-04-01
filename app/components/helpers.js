@@ -20,3 +20,14 @@ export function humanifySize(bytes, sizesStack = sizes.slice()){
     if(sizesStack.length === 1 || bytes < 1024) return bytes + sizesStack[0];
     return humanifySize(Math.round(bytes / 1024 * 100) / 100, sizesStack.slice(1))
 }
+
+const space = /\s/;
+
+export function cssifyName(jsname){
+    let res = '';
+    for(const part of jsname){
+        if(!space.test(part) && part.toLocaleUpperCase() === part) res += '-' + part.toLocaleLowerCase();
+        else res += part
+    }
+    return res
+}

@@ -49,6 +49,8 @@ errors:
     unknown: Неизвестно
 
 containersContainer:
+    servicesListHeading: Сервисы
+    containersListHeading: Другие контейнеры
     services:
         id: 'ID:'
         created: Создан
